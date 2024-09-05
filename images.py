@@ -8,15 +8,14 @@ import os
 import sys
 import time
 from loguru import logger
-import yaml
 
 import torch
 from diffusers import FluxTransformer2DModel, FluxPipeline
 from transformers import T5EncoderModel, CLIPTextModel
-from optimum.quanto import freeze, qfloat8, quantize, qint4
+import optimum.quanto
 
 import uvicorn
-from typing import Optional, List
+from typing import Optional
 from pydantic import BaseModel
 import openai
 
@@ -28,6 +27,22 @@ pipe_global = None
 generator_name_global = None
 random_seed = -1
 app = openedai.OpenAIStub()
+
+map_qdtype = dict([ (name, optimum.quanto.qtypes[name]) for name in optimum.quanto.qtypes ] +
+     [('fp8', optimum.quanto.qfloat8), ('int8', optimum.quanto.qint8), ('int4', optimum.quanto.qint4), ('int2', optimum.quanto.qint2)])
+
+def quanto_wrap(model, quantize):
+    if quantize:
+        quant_kwargs = {}
+        if isinstance(quantize, str):
+            quant_kwargs['weights'] = map_qdtype[quantize]
+        else:
+            for i in ['weights', 'activations']:
+                if i in quantize:
+                    quant_kwargs[i] = map_qdtype[quantize[i]]
+
+        optimum.quanto.quantize(model, **quant_kwargs)
+        optimum.quanto.freeze(model)
 
 
 # This defines the OpenAI API for /v1/images/generations endpoints
@@ -43,11 +58,16 @@ class GenerationsRequest(BaseModel):
 
 
 async def load_flux_model(config: dict) -> FluxPipeline:
+
+    logger.debug(f"Loading flux model: config: {config}")
+
     pipeline = config.pop('pipeline') #
     options = config.pop('options', {})
     _ = config.pop('generation_kwargs', {})
     
+    lora = None
     transformer = None
+    text_encoder = None
     text_encoder_2 = None
 
     if 'FluxTransformer2DModel' in pipeline: # phased loading of models
@@ -59,11 +79,9 @@ async def load_flux_model(config: dict) -> FluxPipeline:
                 flux_transformer['device'] = getattr(torch, flux_transformer['device'])
 
         pipeline['transformer'] = None
-        quant_weights = flux_transformer.pop('quantize', None) # only fp8 for now
+        quantize = flux_transformer.pop('quantize', None)
         transformer = FluxTransformer2DModel.from_single_file(**flux_transformer)
-        if quant_weights:
-            quantize(transformer, weights=qfloat8)  # only fp8 for now
-            freeze(transformer)
+        quanto_wrap(transformer, quantize)
 
     if 'T5EncoderModel' in pipeline:
         t5enc = pipeline.pop('T5EncoderModel')
@@ -71,13 +89,23 @@ async def load_flux_model(config: dict) -> FluxPipeline:
             t5enc['torch_dtype'] = getattr(torch, t5enc['torch_dtype'])
 
         pipeline['text_encoder_2'] = None
-        quant_weights = t5enc.pop('quantize', None)
+        quantize = t5enc.pop('quantize', None)
         text_encoder_2 = T5EncoderModel.from_pretrained(**t5enc)
-        if quant_weights:
-            quantize(text_encoder_2, weights=qfloat8)  # only fp8 for now, getattr(optimum.quanto, quant_weights)?
-            freeze(text_encoder_2)
+        quanto_wrap(text_encoder_2, quantize)
 
-    # XXX CLIP
+    if 'CLIPTextModel' in pipeline:
+        clip = pipeline.pop('CLIPTextModel')
+        if 'torch_dtype' in clip:
+            clip['torch_dtype'] = getattr(torch, clip['torch_dtype'])
+
+        pipeline['text_encoder'] = None
+        quantize = clip.pop('quantize', None)
+        text_encoder = CLIPTextModel.from_pretrained(**clip)
+        quanto_wrap(text_encoder, quantize) # don't do this
+
+#    if 'Lora' in pipeline:
+#        lora = pipeline.pop('Lora')
+#        for 
 
     # XXX Lora data
 
@@ -88,6 +116,17 @@ async def load_flux_model(config: dict) -> FluxPipeline:
 
     flux_pipe = FluxPipeline.from_pretrained(**pipeline)
 
+    if transformer:
+        flux_pipe.transformer = transformer
+    if text_encoder:
+        flux_pipe.text_encoder = text_encoder
+    if text_encoder_2:
+        flux_pipe.text_encoder_2 = text_encoder_2
+
+    #flux_pipe.load_lora_weights( hf_hub_download(repo_name, ckpt_16steps_name), adapter_name="8_steps_lora" )
+    #flux_pipe.fuse_lora(lora_scale=0.125)
+    #flux_pipe.transformer.save_pretrained(transformer)
+
     #if lora:
         #pip install git+https://github.com/huggingface/diffusers@lora-support-flux
         #.enable_lora
@@ -97,14 +136,9 @@ async def load_flux_model(config: dict) -> FluxPipeline:
         #flux_pipe.load_adapter(lora_path) # old PEFT method
         #XXX flux_pipe.unet.load_attn_procs(lora_path)
 
-    if transformer: # and text_encoder_2?
-        flux_pipe.transformer = transformer
-    if text_encoder_2:
-        flux_pipe.text_encoder_2 = text_encoder_2
-
     if options.get('enable_sequential_cpu_offload', False):
         flux_pipe.enable_sequential_cpu_offload()
-    if 'enable_model_cpu_offload' in options:
+    if 'enable_model_cpu_offload' in options and options['enable_sequential_cpu_offload']:
         if not isinstance(options['enable_model_cpu_offload'], dict):
             options['enable_model_cpu_offload'] = {}
         flux_pipe.enable_model_cpu_offload(**options['enable_model_cpu_offload'])
@@ -145,7 +179,7 @@ def config_loader(file_path: str, model: str = 'dall-e-2') -> tuple:
     # walk the config file, load fragments and set defaults as needed
     # return the final model_config, generation_kwargs, enhancer 
     with open(file_path, 'r') as f:
-        config = yaml.safe_load(f)
+        config = json.load(f)
 
     conf_folder = os.path.dirname(file_path)
 

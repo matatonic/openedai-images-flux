@@ -1,5 +1,9 @@
 FROM python:3.11-slim
 
+# For qint4 support, 2x docker image
+#FROM nvidia/cuda:12.1.0-devel-ubuntu22.04
+#RUN apt-get update && apt-get install --no-install-recommends -y build-essential python3-pip python-is-python3 python3-dev && apt-get clean && rm -rf /var/lib/apt/lists/*
+
 WORKDIR /app
 RUN mkdir config
 COPY requirements.txt .
