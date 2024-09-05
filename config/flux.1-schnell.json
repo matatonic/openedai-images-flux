@@ -1,0 +1,17 @@
+{
+  "pipeline": {
+    "pretrained_model_name_or_path": "black-forest-labs/FLUX.1-schnell",
+    "torch_dtype": "bfloat16"
+  },
+  "options": {
+    "enable_sequential_cpu_offload": false,
+    "to": {
+      "device": "cuda"
+    }
+  },
+  "generation_kwargs": {
+    "guidance_scale": 0.0,
+    "num_inference_steps": 4,
+    "max_sequence_length": 256
+  }
+}

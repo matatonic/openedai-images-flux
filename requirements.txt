@@ -1,0 +1,13 @@
+accelerate
+diffusers>=0.30.2
+fastapi
+hf_transfer
+loguru
+openai>=1.0.0
+optimum-quanto
+protobuf
+pydantic
+python-multipart
+sentencepiece
+transformers
+uvicorn

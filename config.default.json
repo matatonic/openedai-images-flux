@@ -1,0 +1,65 @@
+{
+  "models": {
+    "dall-e-2": {
+      "generator": "flux.1-schnell.json"
+    },
+    "dall-e-3": {
+      "generator": "flux.1-dev.json",
+      "enhancer": "openai-enhancer.json"
+    },
+    "schnell": {
+      "generator": "flux.1-schnell.json"
+    },
+    "merged": {
+      "generator": "sayakpaul-flux.1-merged.json"
+    },
+    "dev": {
+      "generator": "flux.1-dev.json"
+    },
+    "schnell-e": {
+      "generator": "flux.1-schnell.json",
+      "enhancer": "openai-enhancer.json"
+    },
+    "merged-e": {
+      "generator": "sayakpaul-flux.1-merged.json",
+      "enhancer": "openai-enhancer.json"
+    },
+    "dev-e": {
+      "generator": "flux.1-dev.json",
+      "enhancer": "openai-enhancer.json"
+    },
+    "schnell-fp8": {
+      "generator": "kijai-flux.1-schnell-fp8.json"
+    },
+    "merged-fp8-4step": {
+      "generator": "drbaph-flux.1-merged-fp8-4step.json"
+    },
+    "merged-fp8": {
+      "generator": "drbaph-flux.1-merged-fp8.json"
+    },
+    "dev-fp8": {
+      "generator": "kijai-flux.1-dev-fp8.json"
+    },
+    "schnell-fp8-16GB": {
+      "generator": "kijai-flux.1-schnell-fp8-16GB.json"
+    },
+    "merged-fp8-4step-16GB": {
+      "generator": "drbaph-flux.1-merged-fp8-4step-16GB.json"
+    },
+    "merged-fp8-16GB": {
+      "generator": "drbaph-flux.1-merged-fp8-16GB.json"
+    },
+    "dev-fp8-16GB": {
+      "generator": "kijai-flux.1-dev-fp8-16GB.json"
+    },
+    "schnell-low": {
+      "generator": "flux.1-schnell-low.json"
+    },
+    "merged-low": {
+      "generator": "sayakpaul-flux.1-merged-low.json"
+    },
+    "dev-low": {
+      "generator": "flux.1-dev-low.json"
+    }
+  }
+}

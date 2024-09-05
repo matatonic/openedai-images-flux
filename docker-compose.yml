@@ -1,0 +1,21 @@
+services:
+  openedai-images-flux:
+    build:
+      dockerfile: Dockerfile
+    tty: true
+    container_name: openedai-images-flux
+    image: ghcr.io/matatonic/openedai-images-flux
+    env_file:
+      - images.env
+    volumes:
+      - ./config:/app/config
+      - ./hf_home:/root/.cache/huggingface
+    ports:
+      - 5005:5005
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]

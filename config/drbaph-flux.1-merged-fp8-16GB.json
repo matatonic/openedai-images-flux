@@ -1,0 +1,35 @@
+{
+  "pipeline": {
+    "pretrained_model_name_or_path": "black-forest-labs/FLUX.1-schnell",
+    "torch_dtype": "bfloat16",
+    "FluxTransformer2DModel": {
+      "quantize": "fp8",
+      "pretrained_model_link_or_path_or_dict": "https://huggingface.co/drbaph/FLUX.1-schnell-dev-merged-fp8/blob/main/FLUX.1-schnell-dev-merged-fp8.safetensors",
+      "torch_dtype": "bfloat16"
+    },
+    "T5EncoderModel": {
+      "quantize": "fp8",
+      "pretrained_model_name_or_path": "black-forest-labs/FLUX.1-schnell",
+      "torch_dtype": "bfloat16",
+      "subfolder": "text_encoder_2"
+    }
+  },
+  "options": {
+    "enable_sequential_cpu_offload": false,
+    "enable_model_cpu_offload": true,
+    "enable_vae_slicing": true,
+    "enable_vae_tiling": true
+  },
+  "generation_kwargs": {
+    "standard": {
+      "guidance_scale": 3.5,
+      "num_inference_steps": 12,
+      "max_sequence_length": 512
+    },
+    "hd": {
+      "guidance_scale": 3.5,
+      "num_inference_steps": 12,
+      "max_sequence_length": 512
+    }
+  }
+}
