@@ -1,12 +1,18 @@
 .env
 images.env
-test-*/
+test*/
 hf_home/
-debug.png
-output.png
-new_logo*.png
-config/config.json
+models/hf_home/
+*.png
+!logo.png
+!open-webui-config.png
 TODO.md
+
+config/*.json
+lora/*
+!lora/lora_files_go_here.txt
+models/*
+!models/model_files_go_here.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -168,3 +174,5 @@ cython_debug/
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
+
+!config/lib

@@ -5,6 +5,7 @@ hf_transfer
 loguru
 openai>=1.0.0
 optimum-quanto
+peft
 protobuf
 pydantic
 python-multipart

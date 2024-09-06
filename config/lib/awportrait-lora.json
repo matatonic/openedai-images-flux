@@ -1,0 +1,32 @@
+{
+  "pipeline": {
+    "pretrained_model_name_or_path": "black-forest-labs/FLUX.1-dev",
+    "torch_dtype": "bfloat16",
+    "Loras": [
+      {
+        "weights": {
+          "pretrained_model_name_or_path_or_dict": "Shakker-Labs/AWPortrait-FL",
+          "weight_name": "AWPortrait-FL-lora.safetensors"
+        },
+        "options": {
+            "lora_scale": 1.0
+        }
+      }
+    ]
+  },
+  "options": {
+    "to": {
+      "device": "cuda"
+    }
+  },
+  "generation_kwargs": {
+    "standard": {
+      "guidance_scale": 3.5,
+      "num_inference_steps": 24
+    },
+    "hd": {
+      "guidance_scale": 5.5,
+      "num_inference_steps": 50
+    }
+  }
+}

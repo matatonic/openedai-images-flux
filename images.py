@@ -21,6 +21,7 @@ import openai
 
 import openedai
 
+default_config_template = 'config.default.json'
 default_config_json = 'config/config.json'
 no_enhance_prompt = "I NEED to test how the tool works with extremely simple prompts. DO NOT add any detail, just use it AS-IS:"
 pipe_global = None
@@ -103,11 +104,8 @@ async def load_flux_model(config: dict) -> FluxPipeline:
         text_encoder = CLIPTextModel.from_pretrained(**clip)
         quanto_wrap(text_encoder, quantize) # don't do this
 
-#    if 'Lora' in pipeline:
-#        lora = pipeline.pop('Lora')
-#        for 
-
-    # XXX Lora data
+    #if 'Loras' in pipeline
+    loras = pipeline.pop("Loras", [])
 
     logger.debug(f"Loading {pipeline}")
 
@@ -123,19 +121,7 @@ async def load_flux_model(config: dict) -> FluxPipeline:
     if text_encoder_2:
         flux_pipe.text_encoder_2 = text_encoder_2
 
-    #flux_pipe.load_lora_weights( hf_hub_download(repo_name, ckpt_16steps_name), adapter_name="8_steps_lora" )
-    #flux_pipe.fuse_lora(lora_scale=0.125)
-    #flux_pipe.transformer.save_pretrained(transformer)
-
-    #if lora:
-        #pip install git+https://github.com/huggingface/diffusers@lora-support-flux
-        #.enable_lora
-        #lora_scale = ...
-        #lora_path = 
-        #flux_pipe.load_lora_weights(lora_path) # wait for diffusers >0.30.2
-        #flux_pipe.load_adapter(lora_path) # old PEFT method
-        #XXX flux_pipe.unet.load_attn_procs(lora_path)
-
+    # Load/Run Options
     if options.get('enable_sequential_cpu_offload', False):
         flux_pipe.enable_sequential_cpu_offload()
     if 'enable_model_cpu_offload' in options and options['enable_sequential_cpu_offload']:
@@ -150,6 +136,23 @@ async def load_flux_model(config: dict) -> FluxPipeline:
         if 'dtype' in options['to']:
             options['to']['dtype'] = getattr(torch, options['to']['dtype'])
         flux_pipe.to(**options['to'])
+
+    # Loras
+    for lora in loras:
+        logger.info(f"Loading Lora: args: {lora['weight_name']}")
+
+        lora_weights = lora.pop('weights')
+        flux_pipe.load_lora_weights(**lora_weights)
+        flux_pipe.fuse_lora(lora_scale=lora.pop('lora_scale', 1.0))
+        flux_pipe.unload_lora_weights()
+
+    # This makes no noticeable difference for me, but YMMV
+    # Other than it's often much slower (compile on demand)
+    compile = options.pop('compile', [])
+    for item_name in compile:
+        logger.info(f"Torch compiling: {item_name}")
+        flux_pipe.item_name.to(memory_format=torch.channels_last)
+        flux_pipe.item_name = torch.compile(flux_pipe.item_name, mode="reduce-overhead", fullgraph=True) # max-autotune? neither mattered for me.
 
     return flux_pipe
 
@@ -313,8 +316,8 @@ async def generations(request: GenerationsRequest):
 
 def default_config_exists():
     if not os.path.exists(default_config_json):
-        logger.info(f"Missing {default_config_json}, installing config.default.json")
-        with open("config.default.json", 'r', encoding='utf8') as from_file:
+        logger.info(f"Missing {default_config_json}, installing {default_config_template}")
+        with open(default_config_template, 'r', encoding='utf8') as from_file:
             with open(default_config_json, 'w', encoding='utf8') as to_file:
                 to_file.write(from_file.read())
 
@@ -324,7 +327,7 @@ def parse_args(argv=None):
         description='OpenedAI Images Flux API Server',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
-    parser.add_argument('-C', '--config', action='store', default=default_config_json, help="Path to the config.json config file")
+    parser.add_argument('-C', '--config', action='store', default=default_config_json, help="Path to the config json file")
     parser.add_argument('-S', '--seed', action='store', default=None, type=int, help="The random seed to set for all generations. (default is random)")
     parser.add_argument('-L', '--log-level', default="INFO", choices=["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"], help="Set the log level")
     parser.add_argument('-P', '--port', action='store', default=5005, type=int, help="Server tcp port")

@@ -17,8 +17,8 @@ An OpenAI API compatible image generation server for the FLUX.1 family of models
 - **Flexible**: Configurable settings for different models and enhancements
 - **Enhancements**: Supports flexible AI prompt enhancers
 - **Standalone Image Generation**: Uses your Nvidia GPU for image generation, doesn't use ComfyUI, SwarmUI or any other backend
+- **Lora Support**: Support for multiple loras with individual scaling weights (strength)
 - [ ] **Easy to setup and use**: Maybe?
-- [ ] **Lora Support** (planned)
 - [ ] **Upscaler Support** (planned)
 - [ ] **BNB NF4 Quantization** (planned)
 - [ ] **GGUF Loading** (planned)
@@ -112,83 +112,11 @@ See the OpenAI Images Guide API and API Documentation for more ways to use the A
 
 ## Configuration
 
-All of the configuration settings are stored in the `config/` folder, and can (mostly*) be modified as needed without needing to restart the server.
+This server is designed to work out of the box with no extra configuration, but it's easy to tinker with.
 
-`config.json` is the primary configuration file, it contains the mapping of `model` to `generator` and `enhancer` configurations.
+There is a more detailed configuration guide in the [CONFIG.md](CONFIG.md).
 
-A basic `config.json` might look like this:
-```json
-{
-  "models": {
-    "dall-e-2": {
-      "generator": "flux.1-schnell.json"
-    },
-    "dall-e-3": {
-      "generator": "flux.1-dev.json",
-      "enhancer": "openai-enhancer.json"
-    }
-}
-```
-
-The default `config.json` provided is much more robust with many more options available.
-
-### Generator JSON Configuration
-
-Generation parameters can be set with `quality` and is completely configurable and can be anything want, the `standard` and `hd` settings are available in the OpenAI API, but you can use whatever you want.
-
-```json
-{
-  "pipeline": {
-    "pretrained_model_name_or_path": "black-forest-labs/FLUX.1-dev",
-    "torch_dtype": "bfloat16"
-  },
-  "options": {
-    "enable_sequential_cpu_offload": false,
-    "to": {
-      "device": "cuda"
-    }
-  },
-  "generation_kwargs": {
-    "standard": {
-      "guidance_scale": 3.5,
-      "num_inference_steps": 25
-    },
-    "hd": {
-      "guidance_scale": 5.5,
-      "num_inference_steps": 50
-    }
-  }
-}
-
-```
-
-The format is very flexible and many entries are not pre-defined but are used as is in API calls to `diffusers` python objects.
-
-### Enhancer JSON Configuration
-
-Enhancers are optional but provide additional functionality to improve image quality and creativity. They depend on an OpenAI chat API.
-
-A simple `enhancer.json` may look like this (examples tend to work well):
-```json
-{
-  "model": "gpt-3.5-turbo",
-  "messages": [
-    {"role": "system", "content": "You are an AI prompt enhancer for image generation AI models, when given a description of an image, be creative and enhance the description to make the image better. No yapping, just output the best enhanced image prompt you can."},
-    {"role": "user", "content": "photo of an ancient castle very atmospheric"},
-    {"role": "assistant", "content": "photo of an ancient castle with a majestic, eerie ambiance, highlighting its towering spires, weathered stone, and ivy-clad walls, set against a backdrop of a dense, mystic forest under a sky completely shrouded in clouds yet illuminated by a diffused, ethereal light, where the fusion of natural decay and enduring architectural grandeur evokes a sense of timeless mystery and the eternal battle between man and nature, casting a glow that reveals subtle details and textures, creating an impression of haunting beauty and solemn tranquility. "},
-    {"role": "user", "content": "photo of a futuristic cityscape with flying cars"},
-    {"role": "assistant", "content": " A bustling futuristic cityscape stretches out beneath a twilight sky, where sleek, metallic skyscrapers pierce through wisps of neon-lit clouds. Flying cars, adorned with glowing blue and purple lights, zip silently along invisible aerial highways, casting dynamic shadows on the glassy surfaces below. The city’s architecture blends organic curves with sharp geometric lines, creating a harmonious fusion of nature and technology. Holographic billboards flicker with vibrant advertisements, while pedestrians in streamlined attire stroll along elevated walkways lined with lush vertical gardens. The scene is bathed in a soft, ethereal glow from the setting sun, reflecting off the polished surfaces and adding a warm contrast to the cool artificial lights. The composition captures the city from a bird’s-eye view, showcasing its intricate layout and futuristic charm, evoking a sense of wonder and technological advancement."}
-  ],
-  "temperature": 1.0,
-  "max_tokens": 256
-}
-```
-
-There are 2 pre-configured rule based openai enhancers, `openai-enhancer.json` which contains some additional safety features, and `openai-enhancer-research.json` which is for scientists. They don't always work well, and the results are highly dependent on the quality of the chat model you use, so feel free to create your own and experiment.
-
-You may also find that FLUX.1 performs very well with no prompt enhancement at all.
-
-## Additional Pre-Configured models
+## Pre-Configured models
 
 > FP8 is the only available quantization so far, but more will come soon!
 
@@ -226,8 +154,14 @@ Low VRAM options (<4GB VRAM, ~32GB RAM, `+enable_sequential_cpu_offload`, float1
 - `dev-low`: `flux.1-dev-low.json` Dev FP16, at least a few minutes per image
 - `merged-low`: `sayakpaul-flux.1-merged-low.json` Dev+Schnell FP16 merged, 12 steps by default
 
+High VRAM options (80GB VRAM, float32 inference, really slow)
 
-> Timings are measured at 1024x1024 on an Nvidia A100 and may vary wildly from your system.
+- `dev-f32`: `flux.1-dev-fp32.json` Dev in full float32 glory, no loss.
+- `schnell-f32`: `flux.1-schnell-f32.json` Schnell in full float32 glory, no loss.
+
+And more, check out the `config/lib` folder for more examples, including lora options.
+
+> Timings are casually measured at 1024x1024 standard on an Nvidia A100 and may vary wildly from your system.
 
 > \*) The name of the generator file is used to determine if a model is already loaded or not, if you edit a generator config in a way which requires reloading the model (such as changing `pipeline` or `options`), it wont reload it automatically. `config.json` and `generation_kwargs` will always be loaded each API call.
 

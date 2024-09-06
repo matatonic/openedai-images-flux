@@ -9,7 +9,9 @@ services:
       - images.env
     volumes:
       - ./config:/app/config
-      - ./hf_home:/root/.cache/huggingface
+      - ./models:/app/models
+      - ./lora:/app/lora
+      - ./models/hf_home:/root/.cache/huggingface
     ports:
       - 5005:5005
     deploy:
