@@ -1,15 +1,12 @@
 {
   "pipeline": {
     "pretrained_model_name_or_path": "black-forest-labs/FLUX.1-schnell",
-    "torch_dtype": "float16"
+    "torch_dtype": "float32"
   },
   "options": {
     "enable_sequential_cpu_offload": true,
     "enable_vae_slicing": true,
-    "enable_vae_tiling": true,
-    "to": {
-      "dtype": "float16"
-    }
+    "enable_vae_tiling": true
   },
   "generation_kwargs": {
     "guidance_scale": 0.0,

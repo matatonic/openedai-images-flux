@@ -1,10 +1,12 @@
 {
   "pipeline": {
     "pretrained_model_name_or_path": "sayakpaul/FLUX.1-merged",
-    "torch_dtype": "bfloat16"
+    "torch_dtype": "float16"
   },
   "options": {
-    "enable_sequential_cpu_offload": true,
+    "enable_sequential_cpu_offload": {
+      "device": "cuda"
+    },
     "enable_vae_slicing": true,
     "enable_vae_tiling": true,
     "to": {

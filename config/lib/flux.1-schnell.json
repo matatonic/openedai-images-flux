@@ -5,6 +5,8 @@
   },
   "options": {
     "enable_sequential_cpu_offload": false,
+    "enable_vae_slicing": true,
+    "enable_vae_tiling": true,
     "to": {
       "device": "cuda"
     }

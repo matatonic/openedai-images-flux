@@ -122,8 +122,10 @@ async def load_flux_model(config: dict) -> FluxPipeline:
         flux_pipe.text_encoder_2 = text_encoder_2
 
     # Load/Run Options
-    if options.get('enable_sequential_cpu_offload', False):
-        flux_pipe.enable_sequential_cpu_offload()
+    if 'enable_sequential_cpu_offload' in options and options['enable_sequential_cpu_offload']:
+        if not isinstance(options['enable_sequential_cpu_offload'], dict):
+            options['enable_sequential_cpu_offload'] = {}
+        flux_pipe.enable_sequential_cpu_offload(**options['enable_sequential_cpu_offload'])
     if 'enable_model_cpu_offload' in options and options['enable_sequential_cpu_offload']:
         if not isinstance(options['enable_model_cpu_offload'], dict):
             options['enable_model_cpu_offload'] = {}
@@ -156,6 +158,15 @@ async def load_flux_model(config: dict) -> FluxPipeline:
 
     return flux_pipe
 
+def unload_model():
+    global pipe_global, generator_name_global
+    logger.info(f"UNLoading generator: {generator_name_global}")
+    if pipe_global: del pipe_global
+    pipe_global = None
+    generator_name_global = None
+    gc.collect()
+    torch.cuda.empty_cache()
+    torch.cuda.ipc_collect()
 
 async def ready_model(generator_name: str, generator: dict) -> FluxPipeline:
     global pipe_global, generator_name_global
@@ -165,12 +176,7 @@ async def ready_model(generator_name: str, generator: dict) -> FluxPipeline:
         generator_name_global = generator_name
 
     elif generator_name != generator_name_global:
-        logger.info(f"UNLoading generator: {generator_name_global}")
-        del pipe_global
-        pipe_global = None
-        gc.collect()
-        torch.cuda.empty_cache()
-
+        unload_model()
         logger.info(f"Loading generator: {generator_name}")
         pipe_global = await load_flux_model(generator)
         generator_name_global = generator_name
@@ -287,32 +293,39 @@ async def generations(request: GenerationsRequest):
     if enhancer:
         generation_kwargs['prompt'] = revised_prompt = await enhance_prompt(generation_kwargs['prompt'], **enhancer)
 
-    pipe = await ready_model(generator_name, model_config)
-    images = await generate_images(pipe, **generation_kwargs)
+    try:
+        pipe = await ready_model(generator_name, model_config)
+        images = await generate_images(pipe, **generation_kwargs)
 
-    if images:
-        for img in images:
-            # TODO: cache images, add get method for cache fetch
-            if args.log_level == 'DEBUG':
-                img.save("config/debug.png")
-            img_bytes = io.BytesIO()
-            img.save(img_bytes, format='PNG')
-            b64_json = base64.b64encode(img_bytes.getvalue()).decode('utf-8')
-            img_bytes.close()
-            if request.response_format == 'b64_json':
-                img_dat = {'b64_json': b64_json}
-            else:
-                img_dat = {'url': f'data:image/png;base64,{b64_json}'}  # yeah it's lazy. requests.get() will not work with this, but web clients will
+        if images:
+            for img in images:
+                # TODO: cache images, add get method for cache fetch
+                if args.log_level == 'DEBUG':
+                    img.save("config/debug.png")
+                img_bytes = io.BytesIO()
+                img.save(img_bytes, format='PNG')
+                b64_json = base64.b64encode(img_bytes.getvalue()).decode('utf-8')
+                img_bytes.close()
+                if request.response_format == 'b64_json':
+                    img_dat = {'b64_json': b64_json}
+                else:
+                    img_dat = {'url': f'data:image/png;base64,{b64_json}'}  # yeah it's lazy. requests.get() will not work with this, but web clients will
 
-            if revised_prompt:
-                img_dat['revised_prompt'] = revised_prompt
+                if revised_prompt:
+                    img_dat['revised_prompt'] = revised_prompt
 
-            resp['data'].extend([img_dat])
+                resp['data'].extend([img_dat])
 
-    logger.debug(f"Generated {len(images)} {request.model} image(s) in {int(time.time()) - resp['created']}s")
+        logger.debug(f"Generated {len(images)} {request.model} image(s) in {int(time.time()) - resp['created']}s")
 
-    return resp
+        return resp
 
+    except Exception as e: 
+        logger.error(e)
+        message = repr(e)
+
+    unload_model()
+    raise openedai.InternalServerError(message)
 
 def default_config_exists():
     if not os.path.exists(default_config_json):
