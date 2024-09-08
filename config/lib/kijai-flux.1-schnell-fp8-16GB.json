@@ -3,8 +3,8 @@
     "pretrained_model_name_or_path": "black-forest-labs/FLUX.1-schnell",
     "torch_dtype": "bfloat16",
     "FluxTransformer2DModel": {
-      "quantize": "fp8",
-      "pretrained_model_link_or_path_or_dict": "https://huggingface.co/Kijai/flux-fp8/blob/main/flux1-schnell-fp8.safetensors",
+      "quantize": "qfloat8_e4m3fn",
+      "pretrained_model_link_or_path_or_dict": "https://huggingface.co/Kijai/flux-fp8/blob/main/flux1-schnell-fp8-e4m3fn.safetensors",
       "torch_dtype": "bfloat16"
     },
     "T5EncoderModel": {
@@ -15,8 +15,9 @@
     }
   },
   "options": {
-    "enable_sequential_cpu_offload": false,
-    "enable_model_cpu_offload": true,
+    "enable_model_cpu_offload": {
+      "device": "cuda"
+    },
     "enable_vae_slicing": true,
     "enable_vae_tiling": true
   },

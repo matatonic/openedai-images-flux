@@ -3,23 +3,21 @@
     "pretrained_model_name_or_path": "black-forest-labs/FLUX.1-dev",
     "torch_dtype": "bfloat16",
     "FluxTransformer2DModel": {
-      "quantize": "qfloat8_e4m3fn",
-      "pretrained_model_link_or_path_or_dict": "https://huggingface.co/Kijai/flux-fp8/blob/main/flux1-dev-fp8-e4m3fn.safetensors",
+      "quantize": "qfloat8_e5m2",
+      "pretrained_model_link_or_path_or_dict": "https://huggingface.co/Kijai/flux-fp8/blob/main/flux1-dev-fp8-e5m2.safetensors",
       "torch_dtype": "bfloat16"
     },
     "T5EncoderModel": {
-      "quantize": "qfloat8_e4m3fn",
+      "quantize": "qfloat8_e5m2",
       "pretrained_model_name_or_path": "black-forest-labs/FLUX.1-dev",
       "torch_dtype": "bfloat16",
       "subfolder": "text_encoder_2"
     }
   },
   "options": {
+    "enable_model_cpu_offload": true,
     "enable_vae_slicing": true,
-    "enable_vae_tiling": true,
-    "to": {
-      "device": "cuda"
-    }
+    "enable_vae_tiling": true
   },
   "generation_kwargs": {
     "standard": {

@@ -7,65 +7,68 @@
       "generator": "lib/flux.1-dev.json",
       "enhancer": "lib/openai-enhancer.json"
     },
+
     "schnell": {
       "generator": "lib/flux.1-schnell.json"
-    },
-    "merged": {
-      "generator": "lib/sayakpaul-flux.1-merged.json"
-    },
-    "dev": {
-      "generator": "lib/flux.1-dev.json"
     },
     "schnell-e": {
       "generator": "lib/flux.1-schnell.json",
       "enhancer": "lib/openai-enhancer.json"
     },
+    "schnell-fp8": {
+      "generator": "lib/kijai-flux.1-schnell-fp8.json"
+    },
+    "schnell-fp8-16GB": {
+      "generator": "lib/kijai-flux.1-schnell-fp8-16GB.json"
+    },
+    "schnell-low": {
+      "generator": "lib/flux.1-schnell-low.json"
+    },
+
+    "merged": {
+      "generator": "lib/sayakpaul-flux.1-merged.json"
+    },
     "merged-e": {
       "generator": "lib/sayakpaul-flux.1-merged.json",
       "enhancer": "lib/openai-enhancer.json"
+    },
+    "merged-fp8": {
+      "generator": "lib/drbaph-flux.1-merged-fp8.json"
+    },
+    "merged-fp8-16GB": {
+      "generator": "lib/drbaph-flux.1-merged-fp8-16GB.json"
+    },
+    "merged-fp8-4step": {
+      "generator": "lib/drbaph-flux.1-merged-fp8-4step.json"
+    },
+    "merged-fp8-4step-16GB": {
+      "generator": "lib/drbaph-flux.1-merged-fp8-4step-16GB.json"
+    },
+    "merged-low": {
+      "generator": "lib/sayakpaul-flux.1-merged-low.json"
+    },
+
+    "dev": {
+      "generator": "lib/flux.1-dev.json"
     },
     "dev-e": {
       "generator": "lib/flux.1-dev.json",
       "enhancer": "lib/openai-enhancer.json"
     },
-    "schnell-fp8": {
-      "generator": "lib/kijai-flux.1-schnell-fp8.json"
-    },
-    "merged-fp8-4step": {
-      "generator": "lib/drbaph-flux.1-merged-fp8-4step.json"
-    },
-    "merged-fp8": {
-      "generator": "lib/drbaph-flux.1-merged-fp8.json"
-    },
     "dev-fp8": {
       "generator": "lib/kijai-flux.1-dev-fp8.json"
-    },
-    "schnell-fp8-16GB": {
-      "generator": "lib/kijai-flux.1-schnell-fp8-16GB.json"
-    },
-    "merged-fp8-4step-16GB": {
-      "generator": "lib/drbaph-flux.1-merged-fp8-4step-16GB.json"
-    },
-    "merged-fp8-16GB": {
-      "generator": "lib/drbaph-flux.1-merged-fp8-16GB.json"
     },
     "dev-fp8-16GB": {
       "generator": "lib/kijai-flux.1-dev-fp8-16GB.json"
     },
-    "schnell-low": {
-      "generator": "lib/flux.1-schnell-low.json"
+    "dev-fp8-e5m2": {
+      "generator": "lib/kijai-flux.1-dev-fp8-e5m2.json"
     },
-    "merged-low": {
-      "generator": "lib/sayakpaul-flux.1-merged-low.json"
+    "dev-fp8-e5m2-16GB": {
+      "generator": "lib/kijai-flux.1-dev-fp8-e5m2-16GB.json"
     },
     "dev-low": {
       "generator": "lib/flux.1-dev-low.json"
-    },
-    "schnell-f32": {
-      "generator": "lib/flux.1-schnell-f32.json"
-    },
-    "dev-f32": {
-      "generator": "lib/flux.1-dev-f32.json"
     }
   }
 }

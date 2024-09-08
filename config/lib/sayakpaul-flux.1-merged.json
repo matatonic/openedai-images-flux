@@ -4,7 +4,6 @@
     "torch_dtype": "bfloat16"
   },
   "options": {
-    "enable_sequential_cpu_offload": false,
     "enable_vae_slicing": true,
     "enable_vae_tiling": true,
     "to": {
@@ -14,13 +13,11 @@
   "generation_kwargs": {
     "standard": {
       "guidance_scale": 1.5,
-      "num_inference_steps": 12,
-      "max_sequence_length": 512
+      "num_inference_steps": 12
     },
     "hd": {
       "guidance_scale": 3.0,
-      "num_inference_steps": 24,
-      "max_sequence_length": 512
+      "num_inference_steps": 24
     }
   }
 }

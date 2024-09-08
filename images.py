@@ -126,7 +126,7 @@ async def load_flux_model(config: dict) -> FluxPipeline:
         if not isinstance(options['enable_sequential_cpu_offload'], dict):
             options['enable_sequential_cpu_offload'] = {}
         flux_pipe.enable_sequential_cpu_offload(**options['enable_sequential_cpu_offload'])
-    if 'enable_model_cpu_offload' in options and options['enable_sequential_cpu_offload']:
+    if 'enable_model_cpu_offload' in options and options['enable_model_cpu_offload']:
         if not isinstance(options['enable_model_cpu_offload'], dict):
             options['enable_model_cpu_offload'] = {}
         flux_pipe.enable_model_cpu_offload(**options['enable_model_cpu_offload'])
@@ -321,7 +321,7 @@ async def generations(request: GenerationsRequest):
         return resp
 
     except Exception as e: 
-        logger.error(e)
+        logger.exception(e)
         message = repr(e)
 
     unload_model()

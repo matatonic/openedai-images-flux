@@ -31,7 +31,7 @@ print(f"Baseline CUDA memory: {torch_memory_baseline:0.1f}GB")
 
 def preamble(model, f):
     start = time.time()
-    response = client.images.generate(prompt=not_enhanced, model=model, size="256x256", response_format='b64_json')
+    response = client.images.generate(prompt=not_enhanced + 'test', model=model, size="256x256", response_format='b64_json')
     end = time.time()
     print(f"# {model} First Image Latency (load time): {int(end - start)} seconds", file=f)
     mem_update(model, f, "start")
@@ -48,7 +48,7 @@ def generate_image(prompt, model, res, f, n = 1, suffix='', quality='standard'):
     print(f"> {model} {quality} {res} took {end-start:.1f} seconds", file=f)
 
     for i, img in enumerate(response.data, 1):
-        fname = f"test_image_{model}_{quality}_{res}-{suffix}-{i:02d}_{n:02d}.png"
+        fname = f"{response.created}-{model}-{res}-{quality}-{i}.png"
         with open(f'{TEST_DIR}/{fname}', 'wb') as png:
             png.write(base64.b64decode(img.b64_json))
         # markdown record the details of the test, including any extra revised_prompt
@@ -60,12 +60,8 @@ def generate_image(prompt, model, res, f, n = 1, suffix='', quality='standard'):
     print("-"*50, file=f)
     print("\n", file=f, flush=True)
 
-def extended_test(prompt, n=1):
-
-    with open("config.default.json") as f:
-        config = json.load(f)
-
-    for model in config['models']:
+def extended_test(models, prompt, n=1):
+    for model in models:
         if 'enhancer' not in config['models'][model]:
             with open(f"{TEST_DIR}/test_images-{model}.md", "w") as f:
 
@@ -75,18 +71,15 @@ def extended_test(prompt, n=1):
                 full_res = [ 256, 320, 448, 512, 640, 768, 896, 1024, 1080, 1152, 1280, 1344, 1408, 1536, 1664, 1728, 1796, 1920, 2176]
                 for x, y in itertools.product(full_res, full_res):
                     res = f"{x}x{y}"
-                    mem_update(model, f, f"{res}")                    
+                    mem_update(model, f, f"{res}")
                     for quality in ['standard', 'hd']:
                         generate_image(prompt, model, res, f, n=n, quality=quality)
 
                 mem_update(model, f, f"end")
 
-def full_test(prompt, n=1):
-    with open("config.default.json") as f:
-        config = json.load(f)
-
-    for model in config['models']:
-        with open(f"{TEST_DIR}/test_images-{model}.md", "w") as f:
+def full_test(models, prompt, n=1):
+    for model in models:
+        with open(f"{TEST_DIR}/full_test-{model}.md", "w") as f:
             preamble(model, f)
             print(f"## Prompt\n```{prompt}```", file=f)
 
@@ -98,12 +91,8 @@ def full_test(prompt, n=1):
             mem_update(model, f, f"end")
 
 def official_test(prompt, n=1):
-
-    with open("config.default.json") as f:
-        config = json.load(f)
-
     for model in ['dall-e-2', 'dall-e-3']:
-        with open(f"{TEST_DIR}/test_images-{model}.md", "w") as f:
+        with open(f"{TEST_DIR}/official_test-{model}.md", "w") as f:
             preamble(model, f)
             print(f"## Prompt\n```{prompt}```", file=f)
 
@@ -114,8 +103,19 @@ def official_test(prompt, n=1):
 
             mem_update(model, f, f"end")
 
-def quick_test(prompt, n=1):
-    with open(f"{TEST_DIR}/test_images_quick.md", "w") as f:
+def smoke_test(models, prompt):
+    with open(f"{TEST_DIR}/smoke_test.md", "w") as f:
+        for model in models:
+            preamble(model, f)
+            print(f"## Prompt\n```{prompt}```", file=f)
+
+            res='1024x1024'
+            mem_update(model, f, f"{res}")
+            generate_image(prompt, model, res, f)
+            mem_update(model, f, f"end")
+
+def quick_test(models, prompt, n=1):
+    with open(f"{TEST_DIR}/quick_test.md", "w") as f:
         preamble("dall-e-2", f)
         print(f"# {prompt}", file=f)
         generate_image(prompt, "dall-e-2", "1024x1024", f, n=n)
@@ -131,7 +131,10 @@ def parse_args(argv=None):
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument('-p', '--prompt', action='store', type=str, default="A cute baby sea otter")
+    parser.add_argument('-c', '--config', type=str, default="config.default.json")
+    parser.add_argument('-m', '--models', type=str, default='all')
     parser.add_argument('-q', '--quick', action='store_true')
+    parser.add_argument('-s', '--smoke', action='store_true')
     parser.add_argument('-f', '--full', action='store_true')
     parser.add_argument('-o', '--official', action='store_true')
     parser.add_argument('-x', '--extended', action='store_true')
@@ -147,13 +150,23 @@ if __name__ == '__main__':
     TEST_DIR = args.test_dir
     os.makedirs(TEST_DIR, exist_ok=True)
 
+    if args.models == 'all':
+        with open(args.config) as f:
+            config = json.load(f)
+
+        models = list(config['models'])
+    else:
+        models = args.models.split(',')
+
     if args.quick:
-        quick_test(args.prompt, n=args.batch)
+        quick_test(models, args.prompt, n=args.batch)
+    if args.smoke:
+        smoke_test(models, args.prompt)
     if args.official:
         official_test(args.prompt, n=args.batch)
     if args.full:
-        full_test(args.prompt, n=args.batch)
+        full_test(models, args.prompt, n=args.batch)
     if args.extended:
-        extended_test(args.prompt, n=args.batch)
+        extended_test(models, args.prompt, n=args.batch)
 
 

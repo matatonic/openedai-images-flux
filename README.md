@@ -134,17 +134,19 @@ By default, the following models are configured (require ~40GB VRAM, bfloat16, <
 - `dall-e-2` is set to use `shnell`
 - `dall-e-3` is set to use `dev`, with prompt enhancement if an openai chat API is available.
 
-Additional FP8 models (require ~24GB VRAM and can be slow to load, `+enable_vae_slicing`, `+enable_vae_tiling`, ~3+s/step):
+Additional FP8 quantized models (require ~24GB VRAM and can be slow to load, `+enable_vae_slicing`, `+enable_vae_tiling`, ~3+s/step):
 
-- `schnell-fp8`: `kijai-flux.1-schnell-fp8.json` Scnhell with FP8 quantization (slow to load), 4 steps (10-15s)
-- `dev-fp8`: `kijai-flux.1-dev-fp8.json` Dev with FP8 quantization (slow to load), 25/50 steps
+- `schnell-fp8`: `kijai-flux.1-schnell-fp8.json` Scnhell with FP8 quantization, 4 steps (10-15s)
+- `dev-fp8`: `kijai-flux.1-dev-fp8.json` Dev with FP8 quantization, 25/50 steps
+- `dev-fp8-e5m2`: `kijai-flux.1-dev-fp8-e5m2.json` Dev with FP8_e5m2 quantization, 25/50 steps (slightly better)
 - `merged-fp8`: `drbaph-flux.1-merged-fp8.json` Dev+Schnell merged, FP8 quantization, 12 steps by default
 - `merged-fp8-4step`: `drbaph-flux.1-merged-fp8-4step.json` Dev+Schnell merged, FP8 quantization, 4 steps
 
 Additional FP8 models (require ~16GB VRAM and can be slow to load, `+enable_model_cpu_offload`, ~5+s/step):
 
 - `schnell-fp8-16G`: `kijai-flux.1-schnell-fp8-16G.json` Scnhell, 4 steps (~15-30s)
-- `dev-fp8-16G`: `kijai-flux.1-dev-fp8-16G.json` Dev, 25 steps for `standard`, 50 for `hd`
+- `dev-fp8-16G`: `kijai-flux.1-dev-fp8-16G.json` Dev with FP8 quantization, 25/50 steps
+- `dev-fp8-e5m2-16G`: `kijai-flux.1-dev-fp8-e5m2-16G.json` Dev with FP8_e5m2 quantization, 25/50 steps (slightly better)
 - `merged-fp8-4step-16G`: `drbaph-flux.1-merged-fp8-4step-16G.json` Dev+Schnell merged, 4 steps
 - `merged-fp8-16G`: `drbaph-flux.1-merged-fp8-16G.json` Dev+Schnell merged, 12 steps by default
 
@@ -153,11 +155,6 @@ Low VRAM options (<4GB VRAM, ~32GB RAM, `+enable_sequential_cpu_offload`, float1
 - `schnell-low`: `flux.1-schnell-low.json` Schnell FP16, (30-60s per image)
 - `dev-low`: `flux.1-dev-low.json` Dev FP16, at least a few minutes per image
 - `merged-low`: `sayakpaul-flux.1-merged-low.json` Dev+Schnell FP16 merged, 12 steps by default
-
-High VRAM options (80GB VRAM, float32 inference, really slow)
-
-- `dev-f32`: `flux.1-dev-fp32.json` Dev in full float32 glory, no loss.
-- `schnell-f32`: `flux.1-schnell-f32.json` Schnell in full float32 glory, no loss.
 
 And more, check out the `config/lib` folder for more examples, including lora options.
 
@@ -193,7 +190,7 @@ options:
 
 #### "that cleft chin woman", "everyone is too beautiful"
 
-* no fix, but lora support is coming.
+* that's how the model works, try a lora
 
 #### There are no protections for simultaneous users or requests
 
