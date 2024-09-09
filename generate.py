@@ -8,6 +8,7 @@ import sys
 import openai
 from PIL import Image
 
+
 def parse_args(argv):
     # prompt, model, size, filename
     parser = argparse.ArgumentParser(description='Generate an image from a prompt using OpenAI\'s DALL-E API.')
@@ -22,54 +23,59 @@ def parse_args(argv):
     parser.add_argument('-E', '--no-enhancement', action='store_true', help='Do not enhance the prompt.')
     parser.add_argument('-S', '--no-show', action='store_true', help='Do not display the image.')
     parser.add_argument('-V', '--no-save', action='store_true', help='Do not save the image, view only')
+    parser.add_argument('-B', '--bulk', action='store_true', help='Process prompts from file, one per line.')
     
     return parser.parse_args(argv)
 
 if __name__ == '__main__':
     args = parse_args(sys.argv[1:])
 
-    if args.no_enhancement:
-        args.prompt = "I NEED to test how the tool works with extremely simple prompts. DO NOT add any detail, just use it AS-IS:" + args.prompt
-
     client = openai.Client(base_url='http://localhost:5005/v1', api_key='sk-ip')
 
-    def generation_round():
-        
-        response = client.images.generate(
-            prompt=args.prompt,
-            response_format='b64_json',
-            model=args.model,
-            size=args.size,
-            n=int(args.batch),
-            quality=args.quality,
-        )
+    if args.bulk:
+        all_prompts = [ line.strip() for line in open(args.prompt, 'r') if len(line.strip()) > 0 and line.strip()[0] != '#']
+    else:
+        all_prompts = [ args.prompt ]
+    
+    for prompt in all_prompts:
+        if args.no_enhancement:
+            prompt = "I NEED to test how the tool works with extremely simple prompts. DO NOT add any detail, just use it AS-IS:" + prompt
 
-        for n, img in enumerate(response.data):
-            image = Image.open(io.BytesIO(base64.b64decode(img.b64_json)))
+        def generation_round():
+            response = client.images.generate(
+                prompt=prompt,
+                response_format='b64_json',
+                model=args.model,
+                size=args.size,
+                n=int(args.batch),
+                quality=args.quality,
+            )
 
-            if not args.no_save:
-                if args.filename:
-                    filename = args.filename
-                    if int(args.batch) > 1:
-                        filename = f"{filename.split('.png')[0]}-{n}.png"
-                else:
-                    f_args = dict(
-                        short_prompt=args.prompt[:20],
-                        prompt=args.prompt,
-                        n=n,
-                        model=args.model,
-                        size=args.size,
-                        quality=args.quality,
-                        created=response.created,
-                    )
-                    
-                    filename = args.auto_name_format.format(**f_args).replace('/','_')
-            
-                image.save(filename, format="PNG")
-                print(f'Saved: {filename}')
-            
-            if not args.no_show:
-                image.show()
+            for n, img in enumerate(response.data):
+                if not args.no_save:
+                    if args.filename:
+                        filename = args.filename
+                        if int(args.batch) > 1:
+                            filename = f"{filename.split('.png')[0]}-{n}.png"
+                    else:
+                        f_args = dict(
+                            short_prompt=args.prompt[:20],
+                            prompt=args.prompt,
+                            n=n,
+                            model=args.model,
+                            size=args.size,
+                            quality=args.quality,
+                            created=response.created,
+                        )
+                        
+                        filename = args.auto_name_format.format(**f_args).replace('/','_')
+                
+                    with open(filename, 'wb') as f:
+                        f.write(base64.b64decode(img.b64_json))
+                        print(f'Saved: {filename}')
+    
+                if not args.no_show:
+                    Image.open(filename).show()
 
-    for i in range(0, args.rounds):
-        generation_round()
+        for i in range(0, args.rounds):
+            generation_round()

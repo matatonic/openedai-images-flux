@@ -45,7 +45,7 @@ def preamble(model, f):
 def mem_update(model, f, string):
     print(f"> {model} Memory used ({string}) {get_total_gpu_mem_used():0.1f} GB", file=f)
 
-def generate_image(folder, prompt, model, res, f, n = 1, suffix='', quality='standard'):
+def generate_image(folder, prompt, model, res, f, n = 1, quality='standard'):
     start = time.time()
     response = client.images.generate(prompt=prompt, model=model, size=res, response_format='b64_json', n=n, quality=quality)
     #image = Image.open(io.BytesIO(base64.b64decode(response.data[0].b64_json)))
@@ -132,7 +132,7 @@ if __name__ == '__main__':
         generic_test(TEST_DIR, "README.md", models, args.prompt)
     if args.perf:
         TEST_DIR = test_dir(args.test_dir, 'perf')
-        generic_test(TEST_DIR, "README.md", models, args.prompt, resolutions = ['256x256', '512x512', '1024x1024', "1536x1536"], rounds=args.batch)
+        generic_test(TEST_DIR, "README.md", models, args.prompt, resolutions = ['256x256', '512x512', '1024x1024', "1536x1536"], qualities = ['standard', 'hd'], rounds=args.batch)
     if args.official:
         TEST_DIR = test_dir(args.test_dir, 'official')
         generic_test(TEST_DIR, "dall-e-2.md", 'dall-e-2', args.prompt, resolutions = ['256x256', '512x512', '1024x1024'], qualities = ['standard', 'hd'], n=10)

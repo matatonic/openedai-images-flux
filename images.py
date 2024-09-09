@@ -7,17 +7,17 @@ import json
 import os
 import sys
 import time
-from loguru import logger
 
-import torch
+from PIL import Image, PngImagePlugin
 from diffusers import FluxTransformer2DModel, FluxPipeline
-from transformers import T5EncoderModel, CLIPTextModel
-import optimum.quanto
-
-import uvicorn
-from typing import Optional
+from loguru import logger
 from pydantic import BaseModel
+from transformers import T5EncoderModel, CLIPTextModel
+from typing import Optional
 import openai
+import optimum.quanto
+import torch
+import uvicorn
 
 import openedai
 
@@ -263,7 +263,7 @@ async def generate_images(pipe, **generation_kwargs) -> list:
 
     generation_kwargs['generator'] = torch.Generator("cpu").manual_seed(seed)
 
-    return pipe(**generation_kwargs).images
+    return pipe(**generation_kwargs).images, seed
 
 
 async def enhance_prompt(prompt: str, **enhancer) -> str:
@@ -286,7 +286,7 @@ async def enhance_prompt(prompt: str, **enhancer) -> str:
 @app.post("/v1/images/generations")
 async def generations(request: GenerationsRequest):
     resp = {
-        'created': int(time.time()),
+        'created': int(time.time() * 1000),
         'data': []
     }
 
@@ -315,17 +315,31 @@ async def generations(request: GenerationsRequest):
 
     try:
         pipe = await ready_model(generator_name, model_config)
-        images = await generate_images(pipe, **generation_kwargs)
+        images, seed = await generate_images(pipe, **generation_kwargs)
 
         if images:
             for img in images:
-                # TODO: cache images, add get method for cache fetch
+                def make_pngmetadata():
+                    # not sure how flux does it, but this is how SD did it.
+                    # a closeup portrait of a playful maid, undercut hair, apron, amazing body, pronounced feminine feature, busty, kitchen, [ash blonde | ginger | pink hair], freckles, flirting with camera.Negative prompt: (deformed, distorted, disfigured:1.3), poorly drawn, bad anatomy, wrong anatomy, extra limb, missing limb, floating limbs, (mutated hands and fingers:1.4), disconnected limbs, mutation, mutated, ugly, disgusting, blurry, amputation. tattoo.
+                    # Steps: 30, Sampler: DPM++ 2M Karras, CFG scale: 6.5, Seed: 1804518985, Size: 768x1024, Model hash: 9aba26abdf, Model: Deliberate, ENSD: 31337
+                    k = generation_kwargs
+                    parameters = f"{k['prompt']}{'.' if k['prompt'][-1] != '.' else ''}Steps: {k['num_inference_steps']}, Sampler: Euler, CFG Scale: {k['guidance_scale']}, Seed: {seed}, Size: {k['width']}x{k['height']}, Model: {request.model}" # batch?
+                    pngmetadata = PngImagePlugin.PngInfo()
+                    pngmetadata.add_text('Parameters', parameters)
+                    return pngmetadata
+
+                pnginfo = make_pngmetadata()
+
                 if args.log_level == 'DEBUG':
-                    img.save("config/debug.png")
+                    img.save("config/debug.png", pnginfo=pnginfo)
+
                 img_bytes = io.BytesIO()
-                img.save(img_bytes, format='PNG')
+                img.save(img_bytes, format='PNG', pnginfo=pnginfo)
                 b64_json = base64.b64encode(img_bytes.getvalue()).decode('utf-8')
                 img_bytes.close()
+
+                
                 if request.response_format == 'b64_json':
                     img_dat = {'b64_json': b64_json}
                 else:
