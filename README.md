@@ -31,7 +31,7 @@ An OpenAI API compatible image generation server for the FLUX.1 family of models
 
 > This is brand new software, if you find any problems or have suggestions please open a [new issue](https://githib.com/matatonic/openedai-images-flux/issues) on GitHub!
 
-> The defaults use the full FP16 FLUX.1 Schnell and Dev models for `dall-e-2` and `dall-e-3` and require approximately 40GB of VRAM, but much more memory friendly options are available by default, and can be easily changed to be the defaults for `dall-e-2/3` if desired. See [Model Configuration](#model_configuration) for details.
+> The defaults use the full FP16 FLUX.1 Schnell and Dev models for `dall-e-2` and `dall-e-3` and require approximately 40GB of VRAM, but much more memory friendly options are available by default, and can be easily changed to be the defaults for `dall-e-2/3` if desired. See [Model Configuration](CONFIG.md) for details.
 
 
 > black-forest-labs/FLUX.1 models are gated, you must request access, and you must set a HuggingFace token to access them.
