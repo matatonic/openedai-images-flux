@@ -1,0 +1,282 @@
+tag,folder,model,prompt,res,n,quality,mem,time
+
+4090,first image time,merged-fp8-4step-compile,preamble,256x256,1,standard,17.53448486328125,191.58589839935303
+4090,test/merged-fp8-4step-compile/4090/perf-2024-09-08T17:36:05,merged-fp8-4step-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,17.69073486328125,0.7277231216430664
+4090,test/merged-fp8-4step-compile/4090/perf-2024-09-08T17:36:05,merged-fp8-4step-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,17.69073486328125,0.7262349128723145
+4090,test/merged-fp8-4step-compile/4090/perf-2024-09-08T17:36:05,merged-fp8-4step-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,17.69073486328125,0.7293510437011719
+4090,test/merged-fp8-4step-compile/4090/perf-2024-09-08T17:36:05,merged-fp8-4step-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,18.07537841796875,113.6592812538147
+4090,test/merged-fp8-4step-compile/4090/perf-2024-09-08T17:36:05,merged-fp8-4step-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,18.07733154296875,1.147181749343872
+4090,test/merged-fp8-4step-compile/4090/perf-2024-09-08T17:36:05,merged-fp8-4step-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,18.07733154296875,1.1444370746612549
+4090,test/merged-fp8-4step-compile/4090/perf-2024-09-08T17:36:05,merged-fp8-4step-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,20.32733154296875,4.518605470657349
+4090,test/merged-fp8-4step-compile/4090/perf-2024-09-08T17:36:05,merged-fp8-4step-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,20.32733154296875,3.2500836849212646
+4090,test/merged-fp8-4step-compile/4090/perf-2024-09-08T17:36:05,merged-fp8-4step-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,20.32733154296875,3.2602546215057373
+4090,test/merged-fp8-4step-compile/4090/perf-2024-09-08T17:36:05,merged-fp8-4step-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,21.14764404296875,8.92509651184082
+4090,test/merged-fp8-4step-compile/4090/perf-2024-09-08T17:36:05,merged-fp8-4step-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,21.14959716796875,7.633445501327515
+4090,test/merged-fp8-4step-compile/4090/perf-2024-09-08T17:36:05,merged-fp8-4step-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,21.14959716796875,7.642924070358276
+4090,first image time,dev-fp8-e5m2-compile,preamble,256x256,1,standard,-3.52777099609375,315.3055589199066
+4090,test/dev-fp8-e5m2-compile/4090/perf-2024-09-08T17:41:52,dev-fp8-e5m2-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,-3.24652099609375,4.975242614746094
+4090,test/dev-fp8-e5m2-compile/4090/perf-2024-09-08T17:41:52,dev-fp8-e5m2-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,-3.24652099609375,4.973003149032593
+4090,test/dev-fp8-e5m2-compile/4090/perf-2024-09-08T17:41:52,dev-fp8-e5m2-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,-3.24652099609375,4.978825807571411
+4090,test/dev-fp8-e5m2-compile/4090/perf-2024-09-08T17:41:52,dev-fp8-e5m2-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,-3.00433349609375,8.82300066947937
+4090,test/dev-fp8-e5m2-compile/4090/perf-2024-09-08T17:41:52,dev-fp8-e5m2-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,-3.00433349609375,7.094519138336182
+4090,test/dev-fp8-e5m2-compile/4090/perf-2024-09-08T17:41:52,dev-fp8-e5m2-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,-3.00433349609375,7.09293532371521
+4090,test/dev-fp8-e5m2-compile/4090/perf-2024-09-08T17:41:52,dev-fp8-e5m2-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,-0.45355224609375,18.92652726173401
+4090,test/dev-fp8-e5m2-compile/4090/perf-2024-09-08T17:41:52,dev-fp8-e5m2-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,-0.45355224609375,17.202279329299927
+4090,test/dev-fp8-e5m2-compile/4090/perf-2024-09-08T17:41:52,dev-fp8-e5m2-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,-0.45355224609375,17.19787883758545
+4090,test/dev-fp8-e5m2-compile/4090/perf-2024-09-08T17:41:52,dev-fp8-e5m2-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,0.36871337890625,41.317588090896606
+4090,test/dev-fp8-e5m2-compile/4090/perf-2024-09-08T17:41:52,dev-fp8-e5m2-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,0.36871337890625,39.55201077461243
+4090,test/dev-fp8-e5m2-compile/4090/perf-2024-09-08T17:41:52,dev-fp8-e5m2-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,0.37347412109375,40.53634834289551
+4090,first image time,schnell-fp8,preamble,256x256,1,standard,-4.12109375,113.2352442741394
+4090,test/schnell-fp8/4090/perf-2024-09-08T17:50:42,schnell-fp8,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,-4.12109375,0.799307107925415
+4090,test/schnell-fp8/4090/perf-2024-09-08T17:50:42,schnell-fp8,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,-3.36328125,1.294471263885498
+4090,test/schnell-fp8/4090/perf-2024-09-08T17:50:42,schnell-fp8,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,-0.35546875,3.668764114379883
+4090,test/schnell-fp8/4090/perf-2024-09-08T17:50:42,schnell-fp8,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,-0.35546875,9.148603916168213
+4090,first image time,dev-fp8,preamble,256x256,1,standard,-3.31024169921875,132.7085165977478
+4090,test/dev-fp8/4090/perf-2024-09-08T17:52:52,dev-fp8,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,-3.30926513671875,5.589583873748779
+4090,test/dev-fp8/4090/perf-2024-09-08T17:52:52,dev-fp8,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,-2.55535888671875,7.7235212326049805
+4090,test/dev-fp8/4090/perf-2024-09-08T17:52:52,dev-fp8,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,0.45147705078125,20.279104709625244
+4090,test/dev-fp8/4090/perf-2024-09-08T17:52:52,dev-fp8,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,0.45416259765625,48.40739059448242
+4090,first image time,dev-fp8-e5m2,preamble,256x256,1,standard,-3.748046875,117.43025970458984
+4090,test/dev-fp8-e5m2/4090/perf-2024-09-08T17:56:28,dev-fp8-e5m2,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,-3.74609375,5.463534832000732
+4090,test/dev-fp8-e5m2/4090/perf-2024-09-08T17:56:28,dev-fp8-e5m2,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,-3.01708984375,8.004459619522095
+4090,test/dev-fp8-e5m2/4090/perf-2024-09-08T17:56:28,dev-fp8-e5m2,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,0.053466796875,20.57797622680664
+4090,test/dev-fp8-e5m2/4090/perf-2024-09-08T17:56:28,dev-fp8-e5m2,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,0.01190185546875,47.901724100112915
+4090,first image time,merged-fp8,preamble,256x256,1,standard,-3.77655029296875,126.76607823371887
+4090,test/merged-fp8/4090/perf-2024-09-08T17:59:50,merged-fp8,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,-3.77655029296875,2.652400016784668
+4090,test/merged-fp8/4090/perf-2024-09-08T17:59:50,merged-fp8,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,-3.01348876953125,4.008484840393066
+4090,test/merged-fp8/4090/perf-2024-09-08T17:59:50,merged-fp8,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,-0.00323486328125,10.235724449157715
+4090,test/merged-fp8/4090/perf-2024-09-08T17:59:50,merged-fp8,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,-0.01495361328125,24.12579321861267
+4090,first image time,merged-fp8-4step,preamble,256x256,1,standard,-4.00335693359375,113.35910868644714
+4090,test/merged-fp8-4step/4090/perf-2024-09-08T18:02:40,merged-fp8-4step,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,-4.00335693359375,0.7742519378662109
+4090,test/merged-fp8-4step/4090/perf-2024-09-08T18:02:40,merged-fp8-4step,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,-3.24554443359375,1.2450075149536133
+4090,test/merged-fp8-4step/4090/perf-2024-09-08T18:02:40,merged-fp8-4step,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,-0.23162841796875,3.7495765686035156
+4090,test/merged-fp8-4step/4090/perf-2024-09-08T18:02:40,merged-fp8-4step,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,-0.23175048828125,8.921228647232056
+4090,first image time,dev-fp8-16GB,preamble,256x256,1,standard,-20.56695556640625,124.83969974517822
+4090,test/dev-fp8-16GB/4090/perf-2024-09-08T18:04:51,dev-fp8-16GB,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,-20.5592041015625,10.395483493804932
+4090,test/dev-fp8-16GB/4090/perf-2024-09-08T18:04:51,dev-fp8-16GB,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,-20.54376220703125,12.883115291595459
+4090,test/dev-fp8-16GB/4090/perf-2024-09-08T18:04:51,dev-fp8-16GB,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,-20.533935546875,25.765259504318237
+4090,test/dev-fp8-16GB/4090/perf-2024-09-08T18:04:51,dev-fp8-16GB,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,-20.50970458984375,53.88790011405945
+4090,first image time,schnell-low,preamble,256x256,1,standard,-0.0213623046875,44.09824323654175
+4090,test/schnell-low/4090/perf-2024-09-08T18:08:47,schnell-low,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,-0.0213623046875,9.90885591506958
+4090,test/schnell-low/4090/perf-2024-09-08T18:08:47,schnell-low,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,0.0255126953125,10.666994333267212
+4090,test/schnell-low/4090/perf-2024-09-08T18:08:47,schnell-low,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,0.2149658203125,16.347559213638306
+4090,test/schnell-low/4090/perf-2024-09-08T18:08:47,schnell-low,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,0.1407470703125,24.76483178138733
+4090,first image time,dev-low,preamble,256x256,1,standard,0.01300048828125,92.7024233341217
+4090,test/dev-low/4090/perf-2024-09-08T18:10:35,dev-low,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,0.00994873046875,59.3886194229126
+4090,test/dev-low/4090/perf-2024-09-08T18:10:35,dev-low,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,0.02447509765625,62.41578412055969
+4090,test/dev-low/4090/perf-2024-09-08T18:10:35,dev-low,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,0.28851318359375,93.52484273910522
+4090,test/dev-low/4090/perf-2024-09-08T18:10:35,dev-low,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,0.2860107421875,135.20358562469482
+4090,first image time,merged-low,preamble,256x256,1,standard,-0.32806396484375,69.49445366859436
+4090,test/merged-low/4090/perf-2024-09-08T18:18:00,merged-low,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,-0.34368896484375,29.61357593536377
+4090,test/merged-low/4090/perf-2024-09-08T18:18:00,merged-low,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,-0.28118896484375,30.92394518852234
+4090,test/merged-low/4090/perf-2024-09-08T18:18:00,merged-low,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,-0.1434326171875,46.09510588645935
+4090,test/merged-low/4090/perf-2024-09-08T18:18:00,merged-low,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,-0.1434326171875,68.10095763206482
+4090,first image time,schnell-fp8-16GB,preamble,256x256,1,standard,0.60369873046875,140.2198624610901
+4090,test/schnell-fp8-16GB/4090/perf-2024-09-08T18:30:18,schnell-fp8-16GB,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,0.60369873046875,9.373294591903687
+4090,test/schnell-fp8-16GB/4090/perf-2024-09-08T18:30:18,schnell-fp8-16GB,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,0.60333251953125,9.986767053604126
+4090,test/schnell-fp8-16GB/4090/perf-2024-09-08T18:30:18,schnell-fp8-16GB,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,0.61676025390625,12.148230791091919
+4090,test/schnell-fp8-16GB/4090/perf-2024-09-08T18:30:18,schnell-fp8-16GB,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,0.67144775390625,17.12250781059265
+4090,first image time,dev-fp8-16GB,preamble,256x256,1,standard,0.00738525390625,144.0251908302307
+4090,test/dev-fp8-16GB/4090/perf-2024-09-08T18:33:29,dev-fp8-16GB,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,0.00927734375,13.007996797561646
+4090,test/dev-fp8-16GB/4090/perf-2024-09-08T18:33:29,dev-fp8-16GB,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,0.00921630859375,15.810456037521362
+4090,test/dev-fp8-16GB/4090/perf-2024-09-08T18:33:29,dev-fp8-16GB,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,-0.00640869140625,28.601627111434937
+4090,test/dev-fp8-16GB/4090/perf-2024-09-08T18:33:29,dev-fp8-16GB,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,0.0445556640625,56.10889410972595
+4090,first image time,dev-fp8-e5m2-16GB,preamble,256x256,1,standard,-0.17913818359375,136.47022819519043
+4090,test/dev-fp8-e5m2-16GB/4090/perf-2024-09-08T18:37:48,dev-fp8-e5m2-16GB,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,-0.17913818359375,12.250340700149536
+4090,test/dev-fp8-e5m2-16GB/4090/perf-2024-09-08T18:37:48,dev-fp8-e5m2-16GB,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,-0.17718505859375,14.65055537223816
+4090,test/dev-fp8-e5m2-16GB/4090/perf-2024-09-08T18:37:48,dev-fp8-e5m2-16GB,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,-0.177490234375,27.810759782791138
+4090,test/dev-fp8-e5m2-16GB/4090/perf-2024-09-08T18:37:48,dev-fp8-e5m2-16GB,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,-0.076171875,55.86753273010254
+4090,first image time,merged-fp8-4step-16GB,preamble,256x256,1,standard,-0.077880859375,135.44651079177856
+4090,test/merged-fp8-4step-16GB/4090/perf-2024-09-08T18:41:57,merged-fp8-4step-16GB,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,-0.077880859375,6.875592947006226
+4090,test/merged-fp8-4step-16GB/4090/perf-2024-09-08T18:41:57,merged-fp8-4step-16GB,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,-0.077880859375,7.241085052490234
+4090,test/merged-fp8-4step-16GB/4090/perf-2024-09-08T18:41:57,merged-fp8-4step-16GB,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,-0.075927734375,9.808128595352173
+4090,test/merged-fp8-4step-16GB/4090/perf-2024-09-08T18:41:57,merged-fp8-4step-16GB,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,-0.04034423828125,14.999642610549927
+4090,first image time,merged-fp8-16GB,preamble,256x256,1,standard,-0.09332275390625,133.3509383201599
+4090,test/merged-fp8-16GB/4090/perf-2024-09-08T18:44:54,merged-fp8-16GB,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,-0.09332275390625,8.91483473777771
+4090,test/merged-fp8-16GB/4090/perf-2024-09-08T18:44:54,merged-fp8-16GB,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,-0.09136962890625,10.128284215927124
+4090,test/merged-fp8-16GB/4090/perf-2024-09-08T18:44:54,merged-fp8-16GB,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,-0.09136962890625,16.594693899154663
+4090,test/merged-fp8-16GB/4090/perf-2024-09-08T18:44:54,merged-fp8-16GB,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,-0.05426025390625,30.33563542366028
+A100,first image time,schnell,preamble,256x256,1,standard,33.8828125,12.735194683074951
+A100,test/schnell/A100/perf-2024-09-08T19:26:04,schnell,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,33.8828125,0.3230249881744385
+A100,test/schnell/A100/perf-2024-09-08T19:26:04,schnell,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,34.640625,0.7923111915588379
+A100,test/schnell/A100/perf-2024-09-08T19:26:04,schnell,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,37.6484375,2.5776853561401367
+A100,test/schnell/A100/perf-2024-09-08T19:26:04,schnell,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,37.6640625,6.603768825531006
+A100,first image time,merged,preamble,256x256,1,standard,33.955078125,31.256455659866333
+A100,test/merged/A100/perf-2024-09-08T19:26:29,merged,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,33.955078125,1.1693885326385498
+A100,test/merged/A100/perf-2024-09-08T19:26:29,merged,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,34.712890625,2.2293882369995117
+A100,test/merged/A100/perf-2024-09-08T19:26:29,merged,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,37.72265625,6.787755489349365
+A100,test/merged/A100/perf-2024-09-08T19:26:29,merged,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,37.72265625,16.797768115997314
+A100,first image time,dev,preamble,256x256,1,standard,33.95703125,26.586256742477417
+A100,test/dev/A100/perf-2024-09-08T19:27:29,dev,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,33.95703125,2.318617582321167
+A100,test/dev/A100/perf-2024-09-08T19:27:29,dev,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,34.71484375,4.400622606277466
+A100,test/dev/A100/perf-2024-09-08T19:27:29,dev,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,37.72265625,13.280391216278076
+A100,test/dev/A100/perf-2024-09-08T19:27:29,dev,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,37.71875,32.41352844238281
+A100,first image time,schnell-compile,preamble,256x256,1,standard,34.30859375,253.9667308330536
+A100,test/schnell-compile/A100/perf-2024-09-08T19:28:50,schnell-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,34.30859375,0.24041342735290527
+A100,test/schnell-compile/A100/perf-2024-09-08T19:28:50,schnell-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,34.30859375,0.24175715446472168
+A100,test/schnell-compile/A100/perf-2024-09-08T19:28:50,schnell-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,34.30859375,0.23874568939208984
+A100,test/schnell-compile/A100/perf-2024-09-08T19:28:50,schnell-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,34.8599853515625,245.32769918441772
+A100,test/schnell-compile/A100/perf-2024-09-08T19:28:50,schnell-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,34.8619384765625,0.6321239471435547
+A100,test/schnell-compile/A100/perf-2024-09-08T19:28:50,schnell-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,34.8619384765625,0.6345341205596924
+A100,test/schnell-compile/A100/perf-2024-09-08T19:28:50,schnell-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,37.1275634765625,3.6343343257904053
+A100,test/schnell-compile/A100/perf-2024-09-08T19:28:50,schnell-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,37.1275634765625,2.2186436653137207
+A100,test/schnell-compile/A100/perf-2024-09-08T19:28:50,schnell-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,37.1275634765625,2.2255587577819824
+A100,test/schnell-compile/A100/perf-2024-09-08T19:28:50,schnell-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,37.8326416015625,7.391155958175659
+A100,test/schnell-compile/A100/perf-2024-09-08T19:28:50,schnell-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,37.8345947265625,6.070776462554932
+A100,test/schnell-compile/A100/perf-2024-09-08T19:28:50,schnell-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,37.8345947265625,5.975321531295776
+A100,first image time,merged-compile,preamble,256x256,1,standard,34.44427490234375,305.73961210250854
+A100,test/merged-compile/A100/perf-2024-09-08T19:37:42,merged-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,34.56927490234375,0.8794801235198975
+A100,test/merged-compile/A100/perf-2024-09-08T19:37:42,merged-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,34.56927490234375,0.8772392272949219
+A100,test/merged-compile/A100/perf-2024-09-08T19:37:42,merged-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,34.56927490234375,0.8791797161102295
+A100,test/merged-compile/A100/perf-2024-09-08T19:37:42,merged-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,34.98724365234375,3.7442820072174072
+A100,test/merged-compile/A100/perf-2024-09-08T19:37:42,merged-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,34.98724365234375,1.7799055576324463
+A100,test/merged-compile/A100/perf-2024-09-08T19:37:42,merged-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,34.98724365234375,1.7803914546966553
+A100,test/merged-compile/A100/perf-2024-09-08T19:37:42,merged-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,37.41302490234375,7.5970847606658936
+A100,test/merged-compile/A100/perf-2024-09-08T19:37:42,merged-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,37.41302490234375,5.630769729614258
+A100,test/merged-compile/A100/perf-2024-09-08T19:37:42,merged-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,37.41302490234375,5.630447864532471
+A100,test/merged-compile/A100/perf-2024-09-08T19:37:42,merged-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,38.28997802734375,16.568078994750977
+A100,test/merged-compile/A100/perf-2024-09-08T19:37:42,merged-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,38.28997802734375,14.659764051437378
+A100,test/merged-compile/A100/perf-2024-09-08T19:37:42,merged-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,38.28997802734375,14.592726230621338
+A100,first image time,dev-compile,preamble,256x256,1,standard,34.11614990234375,159.20986604690552
+A100,test/dev-compile/A100/perf-2024-09-08T19:44:06,dev-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,34.24114990234375,1.7242088317871094
+A100,test/dev-compile/A100/perf-2024-09-08T19:44:06,dev-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,34.24114990234375,1.7247459888458252
+A100,test/dev-compile/A100/perf-2024-09-08T19:44:06,dev-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,34.24114990234375,1.7353501319885254
+A100,test/dev-compile/A100/perf-2024-09-08T19:44:06,dev-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,34.78997802734375,5.941570997238159
+A100,test/dev-compile/A100/perf-2024-09-08T19:44:06,dev-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,34.78997802734375,3.4283058643341064
+A100,test/dev-compile/A100/perf-2024-09-08T19:44:06,dev-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,34.78997802734375,3.429912567138672
+A100,test/dev-compile/A100/perf-2024-09-08T19:44:06,dev-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,37.57513427734375,13.344809293746948
+A100,test/dev-compile/A100/perf-2024-09-08T19:44:06,dev-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,37.57513427734375,10.796035766601562
+A100,test/dev-compile/A100/perf-2024-09-08T19:44:06,dev-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,37.57513427734375,10.78138256072998
+A100,test/dev-compile/A100/perf-2024-09-08T19:44:06,dev-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,38.73529052734375,30.20282292366028
+A100,test/dev-compile/A100/perf-2024-09-08T19:44:06,dev-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,38.73126220703125,27.684289693832397
+A100,test/dev-compile/A100/perf-2024-09-08T19:44:06,dev-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,38.73126220703125,27.746383905410767
+A100,first image time,dev-fp8-16GB,preamble,256x256,1,standard,2.3656005859375,150.62819004058838
+A100,test/dev-fp8-16GB/A100/perf-2024-09-08T19:49:21,dev-fp8-16GB,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,2.3656005859375,12.667629718780518
+A100,test/dev-fp8-16GB/A100/perf-2024-09-08T19:49:21,dev-fp8-16GB,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,2.3656005859375,13.833952188491821
+A100,test/dev-fp8-16GB/A100/perf-2024-09-08T19:49:21,dev-fp8-16GB,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,2.3675537109375,22.463837146759033
+A100,test/dev-fp8-16GB/A100/perf-2024-09-08T19:49:21,dev-fp8-16GB,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,2.4046630859375,42.14256763458252
+A100,first image time,schnell-fp8,preamble,256x256,1,standard,19.2088623046875,140.58108019828796
+A100,test/schnell-fp8/A100/perf-2024-09-08T19:53:32,schnell-fp8,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,19.2088623046875,0.8307056427001953
+A100,test/schnell-fp8/A100/perf-2024-09-08T19:53:32,schnell-fp8,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,19.9666748046875,1.319108486175537
+A100,test/schnell-fp8/A100/perf-2024-09-08T19:53:32,schnell-fp8,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,22.9744873046875,3.19069242477417
+A100,test/schnell-fp8/A100/perf-2024-09-08T19:53:32,schnell-fp8,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,22.9744873046875,7.392880201339722
+A100,first image time,merged-fp8-4step,preamble,256x256,1,standard,19.20672607421875,140.63259625434875
+A100,test/merged-fp8-4step/A100/perf-2024-09-08T19:56:10,merged-fp8-4step,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,19.20672607421875,0.8336596488952637
+A100,test/merged-fp8-4step/A100/perf-2024-09-08T19:56:10,merged-fp8-4step,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,19.96453857421875,1.287959098815918
+A100,test/merged-fp8-4step/A100/perf-2024-09-08T19:56:10,merged-fp8-4step,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,22.97235107421875,3.2556233406066895
+A100,test/merged-fp8-4step/A100/perf-2024-09-08T19:56:10,merged-fp8-4step,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,22.97235107421875,7.468405485153198
+A100,first image time,merged-fp8,preamble,256x256,1,standard,19.3525390625,128.8225395679474
+A100,test/merged-fp8/A100/perf-2024-09-08T19:58:49,merged-fp8,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,19.3525390625,2.6308062076568604
+A100,test/merged-fp8/A100/perf-2024-09-08T19:58:49,merged-fp8,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,20.1103515625,3.7167673110961914
+A100,test/merged-fp8/A100/perf-2024-09-08T19:58:49,merged-fp8,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,23.1201171875,8.432493686676025
+A100,test/merged-fp8/A100/perf-2024-09-08T19:58:49,merged-fp8,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,23.1201171875,18.53953456878662
+A100,first image time,dev-fp8,preamble,256x256,1,standard,19.32611083984375,132.70884466171265
+A100,test/dev-fp8/A100/perf-2024-09-08T20:01:35,dev-fp8,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,19.32611083984375,5.407962083816528
+A100,test/dev-fp8/A100/perf-2024-09-08T20:01:35,dev-fp8,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,20.08587646484375,7.580963373184204
+A100,test/dev-fp8/A100/perf-2024-09-08T20:01:35,dev-fp8,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,23.09368896484375,17.021379947662354
+A100,test/dev-fp8/A100/perf-2024-09-08T20:01:35,dev-fp8,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,23.09368896484375,36.83760190010071
+A100,first image time,dev-fp8-e5m2,preamble,256x256,1,standard,19.33160400390625,153.47389769554138
+A100,test/dev-fp8-e5m2/A100/perf-2024-09-08T20:04:59,dev-fp8-e5m2,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,19.33160400390625,5.240507125854492
+A100,test/dev-fp8-e5m2/A100/perf-2024-09-08T20:04:59,dev-fp8-e5m2,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,20.08941650390625,7.38292670249939
+A100,test/dev-fp8-e5m2/A100/perf-2024-09-08T20:04:59,dev-fp8-e5m2,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,23.09722900390625,16.712642669677734
+A100,test/dev-fp8-e5m2/A100/perf-2024-09-08T20:04:59,dev-fp8-e5m2,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,23.09185791015625,36.639878034591675
+A100,first image time,merged-fp8-4step-compile,preamble,256x256,1,standard,19.3509521484375,365.9129705429077
+A100,test/merged-fp8-4step-compile/A100/perf-2024-09-08T20:08:44,merged-fp8-4step-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,19.5072021484375,0.7597541809082031
+A100,test/merged-fp8-4step-compile/A100/perf-2024-09-08T20:08:44,merged-fp8-4step-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,19.5072021484375,0.7755441665649414
+A100,test/merged-fp8-4step-compile/A100/perf-2024-09-08T20:08:44,merged-fp8-4step-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,19.5072021484375,0.7555966377258301
+A100,test/merged-fp8-4step-compile/A100/perf-2024-09-08T20:08:44,merged-fp8-4step-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,19.8782958984375,4.74826717376709
+A100,test/merged-fp8-4step-compile/A100/perf-2024-09-08T20:08:44,merged-fp8-4step-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,19.8802490234375,1.1964774131774902
+A100,test/merged-fp8-4step-compile/A100/perf-2024-09-08T20:08:44,merged-fp8-4step-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,19.8802490234375,1.1528851985931396
+A100,test/merged-fp8-4step-compile/A100/perf-2024-09-08T20:08:44,merged-fp8-4step-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,22.5521240234375,6.730336904525757
+A100,test/merged-fp8-4step-compile/A100/perf-2024-09-08T20:08:44,merged-fp8-4step-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,22.5521240234375,2.846989870071411
+A100,test/merged-fp8-4step-compile/A100/perf-2024-09-08T20:08:44,merged-fp8-4step-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,22.5521240234375,2.8612942695617676
+A100,test/merged-fp8-4step-compile/A100/perf-2024-09-08T20:08:44,merged-fp8-4step-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,23.2728271484375,10.817033052444458
+A100,test/merged-fp8-4step-compile/A100/perf-2024-09-08T20:08:44,merged-fp8-4step-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,23.2747802734375,6.934358835220337
+A100,test/merged-fp8-4step-compile/A100/perf-2024-09-08T20:08:44,merged-fp8-4step-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,23.2747802734375,6.925827503204346
+A100,first image time,dev-fp8-e5m2-compile,preamble,256x256,1,standard,19.4603271484375,342.38265919685364
+A100,test/dev-fp8-e5m2-compile/A100/perf-2024-09-08T20:15:42,dev-fp8-e5m2-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,19.7415771484375,4.650383472442627
+A100,test/dev-fp8-e5m2-compile/A100/perf-2024-09-08T20:15:42,dev-fp8-e5m2-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,19.7415771484375,4.626784086227417
+A100,test/dev-fp8-e5m2-compile/A100/perf-2024-09-08T20:15:42,dev-fp8-e5m2-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,19.7415771484375,4.6457414627075195
+A100,test/dev-fp8-e5m2-compile/A100/perf-2024-09-08T20:15:42,dev-fp8-e5m2-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,20.0032958984375,10.602144956588745
+A100,test/dev-fp8-e5m2-compile/A100/perf-2024-09-08T20:15:42,dev-fp8-e5m2-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,20.0052490234375,6.243427991867065
+A100,test/dev-fp8-e5m2-compile/A100/perf-2024-09-08T20:15:42,dev-fp8-e5m2-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,20.0052490234375,6.224283695220947
+A100,test/dev-fp8-e5m2-compile/A100/perf-2024-09-08T20:15:42,dev-fp8-e5m2-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,22.5345458984375,17.41762614250183
+A100,test/dev-fp8-e5m2-compile/A100/perf-2024-09-08T20:15:42,dev-fp8-e5m2-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,22.5364990234375,13.42714810371399
+A100,test/dev-fp8-e5m2-compile/A100/perf-2024-09-08T20:15:42,dev-fp8-e5m2-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,22.5364990234375,13.479359149932861
+A100,test/dev-fp8-e5m2-compile/A100/perf-2024-09-08T20:15:42,dev-fp8-e5m2-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,23.3529052734375,34.40225076675415
+A100,test/dev-fp8-e5m2-compile/A100/perf-2024-09-08T20:15:42,dev-fp8-e5m2-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,23.34912109375,30.11396312713623
+A100,test/dev-fp8-e5m2-compile/A100/perf-2024-09-08T20:15:42,dev-fp8-e5m2-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,23.34912109375,30.044999837875366
+A100,first image time,schnell-fp8-16GB,preamble,256x256,1,standard,2.27655029296875,131.25975728034973
+A100,test/schnell-fp8-16GB/A100/perf-2024-09-08T21:39:36,schnell-fp8-16GB,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,2.30621337890625,9.63485336303711
+A100,test/schnell-fp8-16GB/A100/perf-2024-09-08T21:39:36,schnell-fp8-16GB,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,2.30621337890625,10.193759441375732
+A100,test/schnell-fp8-16GB/A100/perf-2024-09-08T21:39:36,schnell-fp8-16GB,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,2.30487060546875,11.914325952529907
+A100,test/schnell-fp8-16GB/A100/perf-2024-09-08T21:39:36,schnell-fp8-16GB,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,2.35760498046875,15.678096532821655
+A100,first image time,merged-fp8-4step-16GB,preamble,256x256,1,standard,2.31683349609375,126.07851767539978
+A100,test/merged-fp8-4step-16GB/A100/perf-2024-09-08T21:42:36,merged-fp8-4step-16GB,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,2.31683349609375,7.906207799911499
+A100,test/merged-fp8-4step-16GB/A100/perf-2024-09-08T21:42:36,merged-fp8-4step-16GB,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,2.31683349609375,8.2623929977417
+A100,test/merged-fp8-4step-16GB/A100/perf-2024-09-08T21:42:36,merged-fp8-4step-16GB,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,2.31683349609375,10.26049542427063
+A100,test/merged-fp8-4step-16GB/A100/perf-2024-09-08T21:42:36,merged-fp8-4step-16GB,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,2.35394287109375,14.265612840652466
+A100,first image time,merged-fp8-16GB,preamble,256x256,1,standard,2.31658935546875,127.75430178642273
+A100,test/merged-fp8-16GB/A100/perf-2024-09-08T21:45:26,merged-fp8-16GB,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,2.31658935546875,10.0379638671875
+A100,test/merged-fp8-16GB/A100/perf-2024-09-08T21:45:26,merged-fp8-16GB,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,2.30230712890625,10.955654859542847
+A100,test/merged-fp8-16GB/A100/perf-2024-09-08T21:45:26,merged-fp8-16GB,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,2.31658935546875,15.832575798034668
+A100,test/merged-fp8-16GB/A100/perf-2024-09-08T21:45:26,merged-fp8-16GB,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,2.32135009765625,25.842628240585327
+A100,first image time,dev-fp8-e5m2-16GB,preamble,256x256,1,standard,2.27386474609375,128.95731210708618
+A100,test/dev-fp8-e5m2-16GB/A100/perf-2024-09-08T21:48:39,dev-fp8-e5m2-16GB,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,2.28802490234375,12.584535837173462
+A100,test/dev-fp8-e5m2-16GB/A100/perf-2024-09-08T21:48:39,dev-fp8-e5m2-16GB,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,2.28802490234375,14.647921085357666
+A100,test/dev-fp8-e5m2-16GB/A100/perf-2024-09-08T21:48:39,dev-fp8-e5m2-16GB,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,2.28802490234375,23.84606671333313
+A100,test/dev-fp8-e5m2-16GB/A100/perf-2024-09-08T21:48:39,dev-fp8-e5m2-16GB,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,2.33056640625,43.98717761039734
+A100,first image time,schnell-low,preamble,256x256,1,standard,2.3138427734375,32.25354480743408
+A100,test/schnell-low/A100/perf-2024-09-08T21:55:03,schnell-low,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,2.3138427734375,10.45180869102478
+A100,test/schnell-low/A100/perf-2024-09-08T21:55:03,schnell-low,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,2.3607177734375,10.793398380279541
+A100,test/schnell-low/A100/perf-2024-09-08T21:55:03,schnell-low,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,2.5714111328125,17.65639019012451
+A100,test/schnell-low/A100/perf-2024-09-08T21:55:03,schnell-low,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,2.5694580078125,27.075645208358765
+A100,first image time,merged-low,preamble,256x256,1,standard,2.3370361328125,53.03596353530884
+A100,test/merged-low/A100/perf-2024-09-08T21:56:44,merged-low,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,2.3370361328125,28.800164461135864
+A100,test/merged-low/A100/perf-2024-09-08T21:56:44,merged-low,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,2.37255859375,31.46616220474243
+A100,test/merged-low/A100/perf-2024-09-08T21:56:44,merged-low,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,2.58349609375,49.950583934783936
+A100,test/merged-low/A100/perf-2024-09-08T21:56:44,merged-low,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,2.460205078125,75.16424703598022
+A100,first image time,dev-low,preamble,256x256,1,standard,2.32794189453125,86.55751490592957
+A100,test/dev-low/A100/perf-2024-09-08T22:00:46,dev-low,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,2.32989501953125,58.824058532714844
+A100,test/dev-low/A100/perf-2024-09-08T22:00:46,dev-low,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,2.35418701171875,63.51463723182678
+A100,test/dev-low/A100/perf-2024-09-08T22:00:46,dev-low,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,2.5640869140625,101.86313796043396
+A100,test/dev-low/A100/perf-2024-09-08T22:00:46,dev-low,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,2.4544677734375,151.84430408477783
+A100,first image time,dev-int8-compile,preamble,256x256,1,standard,19.289306640625,273.4925100803375
+A100,test/dev-int8-compile/A100/perf-2024-09-08T22:30:21,dev-int8-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,19.492431640625,3.6832542419433594
+A100,test/dev-int8-compile/A100/perf-2024-09-08T22:30:21,dev-int8-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,19.492431640625,3.6858673095703125
+A100,test/dev-int8-compile/A100/perf-2024-09-08T22:30:21,dev-int8-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,19.492431640625,3.686777353286743
+A100,test/dev-int8-compile/A100/perf-2024-09-08T22:30:21,dev-int8-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,19.8468017578125,171.5784397125244
+A100,test/dev-int8-compile/A100/perf-2024-09-08T22:30:21,dev-int8-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,19.8468017578125,5.2471702098846436
+A100,test/dev-int8-compile/A100/perf-2024-09-08T22:30:21,dev-int8-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,19.8468017578125,5.251716613769531
+A100,test/dev-int8-compile/A100/perf-2024-09-08T22:30:21,dev-int8-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,22.240478515625,13.607076168060303
+A100,test/dev-int8-compile/A100/perf-2024-09-08T22:30:21,dev-int8-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,22.240478515625,12.31118130683899
+A100,test/dev-int8-compile/A100/perf-2024-09-08T22:30:21,dev-int8-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,22.2423095703125,12.280437707901001
+A100,test/dev-int8-compile/A100/perf-2024-09-08T22:30:21,dev-int8-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,22.9649658203125,29.905753135681152
+A100,test/dev-int8-compile/A100/perf-2024-09-08T22:30:21,dev-int8-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,22.9649658203125,28.49417781829834
+A100,test/dev-int8-compile/A100/perf-2024-09-08T22:30:21,dev-int8-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,22.966796875,28.47308611869812
+A100,first image time,dev-int8-compile,preamble,256x256,1,standard,19.34210205078125,257.0192697048187
+A100,test/dev-int8-compile/A100/perf-2024-09-08T22:44:02,dev-int8-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,19.62335205078125,3.690213918685913
+A100,test/dev-int8-compile/A100/perf-2024-09-08T22:44:02,dev-int8-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,19.62384033203125,3.7161312103271484
+A100,test/dev-int8-compile/A100/perf-2024-09-08T22:44:02,dev-int8-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,19.62261962890625,3.765604257583618
+A100,test/dev-int8-compile/A100/perf-2024-09-08T22:44:02,dev-int8-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,19.8724365234375,7.298722267150879
+A100,test/dev-int8-compile/A100/perf-2024-09-08T22:44:02,dev-int8-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,19.85919189453125,5.317483186721802
+A100,test/dev-int8-compile/A100/perf-2024-09-08T22:44:02,dev-int8-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,19.90216064453125,5.336080551147461
+A100,test/dev-int8-compile/A100/perf-2024-09-08T22:44:02,dev-int8-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,22.25323486328125,14.403378248214722
+A100,test/dev-int8-compile/A100/perf-2024-09-08T22:44:02,dev-int8-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,22.23406982421875,12.344776630401611
+A100,test/dev-int8-compile/A100/perf-2024-09-08T22:44:02,dev-int8-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,22.23974609375,12.299249410629272
+A100,test/dev-int8-compile/A100/perf-2024-09-08T22:44:02,dev-int8-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,22.9654541015625,30.297921180725098
+A100,test/dev-int8-compile/A100/perf-2024-09-08T22:44:02,dev-int8-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,22.94049072265625,28.454320669174194
+A100,test/dev-int8-compile/A100/perf-2024-09-08T22:44:02,dev-int8-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,22.9219970703125,28.44760274887085
+4090,first image time,dev-int8-compile,preamble,256x256,1,standard,19.3526611328125,303.3248646259308
+4090,test/dev-int8-compile/4090/perf-2024-09-08T22:53:11,dev-int8-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,19.5557861328125,3.773534059524536
+4090,test/dev-int8-compile/4090/perf-2024-09-08T22:53:11,dev-int8-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,19.5557861328125,3.777669906616211
+4090,test/dev-int8-compile/4090/perf-2024-09-08T22:53:11,dev-int8-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,256x256,1,standard,19.5557861328125,3.773677110671997
+4090,test/dev-int8-compile/4090/perf-2024-09-08T22:53:11,dev-int8-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,19.8944091796875,205.3143870830536
+4090,test/dev-int8-compile/4090/perf-2024-09-08T22:53:11,dev-int8-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,19.8944091796875,5.766786575317383
+4090,test/dev-int8-compile/4090/perf-2024-09-08T22:53:11,dev-int8-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,512x512,1,standard,19.8944091796875,5.758464574813843
+4090,test/dev-int8-compile/4090/perf-2024-09-08T22:53:11,dev-int8-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,22.1912841796875,16.74589991569519
+4090,test/dev-int8-compile/4090/perf-2024-09-08T22:53:11,dev-int8-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,22.1912841796875,15.449304819107056
+4090,test/dev-int8-compile/4090/perf-2024-09-08T22:53:11,dev-int8-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1024x1024,1,standard,22.1951904296875,15.458921909332275
+4090,test/dev-int8-compile/4090/perf-2024-09-08T22:53:11,dev-int8-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,22.6949462890625,38.37772250175476
+4090,test/dev-int8-compile/4090/perf-2024-09-08T22:53:11,dev-int8-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,22.618408203125,37.055827617645264
+4090,test/dev-int8-compile/4090/perf-2024-09-08T22:53:11,dev-int8-compile,a bikini model wearing sandals and sunglasses is walking in the jungle with a large tiger,1536x1536,1,standard,22.620361328125,37.014901638031006

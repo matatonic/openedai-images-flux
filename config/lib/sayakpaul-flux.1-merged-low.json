@@ -15,12 +15,12 @@
   },
   "generation_kwargs": {
     "standard": {
-      "guidance_scale": 1.0,
+      "guidance_scale": 3.5,
       "num_inference_steps": 12
     },
     "hd": {
       "guidance_scale": 3.5,
-      "num_inference_steps": 12
+      "num_inference_steps": 25
     }
   }
 }

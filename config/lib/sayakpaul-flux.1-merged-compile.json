@@ -4,6 +4,7 @@
     "torch_dtype": "bfloat16"
   },
   "options": {
+    "compile": ["transformer", "vae"],
     "enable_vae_slicing": true,
     "enable_vae_tiling": true,
     "to": {

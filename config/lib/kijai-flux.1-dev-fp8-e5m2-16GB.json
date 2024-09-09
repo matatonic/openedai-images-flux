@@ -8,7 +8,7 @@
       "torch_dtype": "bfloat16"
     },
     "T5EncoderModel": {
-      "quantize": "qfloat8_e5m2",
+      "quantize": "fp8",
       "pretrained_model_name_or_path": "black-forest-labs/FLUX.1-dev",
       "torch_dtype": "bfloat16",
       "subfolder": "text_encoder_2"

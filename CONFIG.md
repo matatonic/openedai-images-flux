@@ -36,6 +36,7 @@ Sample Generator JSON:
     "torch_dtype": "bfloat16"
   },
   "options": {
+    "compile": ["transformer", "vae"],
     "enable_sequential_cpu_offload": false,
     "enable_model_cpu_offload": false,
     "enable_vae_slicing": false,
@@ -59,6 +60,8 @@ Sample Generator JSON:
 ```
 
 The format is very flexible and many entries are not pre-defined but are used as keywords in API calls to `diffusers` python objects.
+
+The `compile` option can accept a list of components to compile (`["transformer", "vae"]`), compiling can take a while, but the performance improvements may be worth while. In my tests it can take almost 10 minutes before the first image is ready, and images generated approximately 10-20% faster after that.
 
 #### Local model files
 

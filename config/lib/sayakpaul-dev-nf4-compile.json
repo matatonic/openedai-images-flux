@@ -1,0 +1,42 @@
+{
+  "pipeline": {
+    "pretrained_model_name_or_path": "black-forest-labs/FLUX.1-dev",
+    "torch_dtype": "float16",
+    "FluxTransformer2DModel": {
+      "pretrained_model_name_or_path": "sayakpaul/flux.1-dev-nf4-pkg",
+      "subfolder_id": "transformer",
+      "torch_dtype": "float16"
+    },
+    "T5EncoderModel": {
+      "pretrained_model_name_or_path": "sayakpaul/flux.1-dev-nf4-pkg",
+      "subfolder": "text_encoder_2",
+      "torch_dtype": "float16"
+    }
+  },
+  "options": {
+    "compile": ["transformer", "vae"],
+    "enable_model_cpu_offload": {
+      "device": "cuda"
+    },
+    "enable_vae_slicing": true,
+    "enable_vae_tiling": true
+  },
+  "generation_kwargs": {
+    "standard": {
+    "guidance_scale": 3.5,
+    "num_inference_steps": 25
+    },
+    "bfl": {
+    "guidance_scale": 3.5,
+    "num_inference_steps": 50
+    },
+    "hd": {
+    "guidance_scale": 5.5,
+    "num_inference_steps": 50
+    },
+    "xhd": {
+    "guidance_scale": 7.0,
+    "num_inference_steps": 50
+    }
+  }
+}

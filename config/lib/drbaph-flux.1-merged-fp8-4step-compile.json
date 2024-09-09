@@ -4,7 +4,7 @@
     "torch_dtype": "bfloat16",
     "FluxTransformer2DModel": {
       "quantize": "fp8",
-      "pretrained_model_link_or_path_or_dict": "https://huggingface.co/drbaph/FLUX.1-schnell-dev-merged-fp8/blob/main/FLUX.1-schnell-dev-merged-fp8.safetensors",
+      "pretrained_model_link_or_path_or_dict": "https://huggingface.co/drbaph/FLUX.1-schnell-dev-merged-fp8-4step/blob/main/FLUX.1-schnell-dev-merged-fp8-4step.safetensors",
       "torch_dtype": "bfloat16"
     },
     "T5EncoderModel": {
@@ -15,18 +15,23 @@
     }
   },
   "options": {
-    "enable_model_cpu_offload": true,
+    "compile": ["transformer", "vae"],
     "enable_vae_slicing": true,
-    "enable_vae_tiling": true
+    "enable_vae_tiling": true,
+    "to": {
+      "device": "cuda"
+    }
   },
   "generation_kwargs": {
     "standard": {
-      "guidance_scale": 3.5,
-      "num_inference_steps": 12
+      "guidance_scale": 0.0,
+      "num_inference_steps": 4,
+      "max_sequence_length": 256
     },
     "hd": {
-      "guidance_scale": 3.5,
-      "num_inference_steps": 25
+      "guidance_scale": 0.0,
+      "num_inference_steps": 8,
+      "max_sequence_length": 256
     }
   }
 }

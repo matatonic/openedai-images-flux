@@ -15,9 +15,12 @@
     }
   },
   "options": {
-    "enable_model_cpu_offload": true,
+    "compile": ["transformer", "vae"],
     "enable_vae_slicing": true,
-    "enable_vae_tiling": true
+    "enable_vae_tiling": true,
+    "to": {
+      "device": "cuda"
+    }
   },
   "generation_kwargs": {
     "standard": {

@@ -22,7 +22,13 @@
     }
   },
   "generation_kwargs": {
-    "guidance_scale": 3.5,
-    "num_inference_steps": 12
+    "standard": {
+      "guidance_scale": 3.5,
+      "num_inference_steps": 12
+    },
+    "hd": {
+      "guidance_scale": 3.5,
+      "num_inference_steps": 25
+    }
   }
 }

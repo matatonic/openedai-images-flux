@@ -81,7 +81,10 @@ async def load_flux_model(config: dict) -> FluxPipeline:
 
         pipeline['transformer'] = None
         quantize = flux_transformer.pop('quantize', None)
-        transformer = FluxTransformer2DModel.from_single_file(**flux_transformer)
+        if 'pretrained_model_link_or_path_or_dict' in flux_transformer:
+            transformer = FluxTransformer2DModel.from_single_file(**flux_transformer)
+        else:
+            transformer = FluxTransformer2DModel.from_pretrained(**flux_transformer)
         quanto_wrap(transformer, quantize)
 
     if 'T5EncoderModel' in pipeline:
@@ -151,10 +154,16 @@ async def load_flux_model(config: dict) -> FluxPipeline:
     # This makes no noticeable difference for me, but YMMV
     # Other than it's often much slower (compile on demand)
     compile = options.pop('compile', [])
-    for item_name in compile:
-        logger.info(f"Torch compiling: {item_name}")
-        flux_pipe.item_name.to(memory_format=torch.channels_last)
-        flux_pipe.item_name = torch.compile(flux_pipe.item_name, mode="reduce-overhead", fullgraph=True) # max-autotune? neither mattered for me.
+    if compile:
+        logger.info(f"Torch compiling...")
+        if 'transformer' in compile:
+            flux_pipe.transformer.to(memory_format=torch.channels_last)
+            flux_pipe.transformer = torch.compile(flux_pipe.transformer, mode="max-autotune", fullgraph=True)
+        if 'vae' in compile:
+            flux_pipe.vae.to(memory_format=torch.channels_last)
+            flux_pipe.vae = torch.compile(flux_pipe.vae, mode="max-autotune", fullgraph=True)
+
+    #flux_pipe.fuse_qkv_projections()
 
     return flux_pipe
 
@@ -167,6 +176,8 @@ def unload_model():
     gc.collect()
     torch.cuda.empty_cache()
     torch.cuda.ipc_collect()
+    torch.cuda.reset_max_memory_allocated()
+    torch.cuda.reset_peak_memory_stats()
 
 async def ready_model(generator_name: str, generator: dict) -> FluxPipeline:
     global pipe_global, generator_name_global
@@ -281,6 +292,11 @@ async def generations(request: GenerationsRequest):
 
     # block or queue requests?
 
+    # unload hack
+    if request.model == "unload":
+        unload_model()
+        return resp
+
     generator_name, model_config, generation_kwargs, enhancer = load_generation_config(request)
 
     # dall-e-3 reworks the prompt
@@ -291,7 +307,11 @@ async def generations(request: GenerationsRequest):
         enhancer = None
 
     if enhancer:
-        generation_kwargs['prompt'] = revised_prompt = await enhance_prompt(generation_kwargs['prompt'], **enhancer)
+        try:
+            generation_kwargs['prompt'] = revised_prompt = await enhance_prompt(generation_kwargs['prompt'], **enhancer)
+        except Exception as e:
+            logger.warning(f"{repr(e)}. Enhancer failed: {enhancer}")
+            logger.debug(e)
 
     try:
         pipe = await ready_model(generator_name, model_config)
@@ -359,6 +379,13 @@ if __name__ == "__main__":
 
     default_config_exists()
 
+    # tuning for compile
+    # 
+    torch._inductor.config.conv_1x1_as_mm = True
+    torch._inductor.config.coordinate_descent_tuning = True
+    torch._inductor.config.epilogue_fusion = False
+    torch._inductor.config.coordinate_descent_check_all_directions = True
+
     if args.seed is not None:
         random_seed = args.seed
 
@@ -373,4 +400,4 @@ if __name__ == "__main__":
     for m in config['models']:
         app.register_model(m)
 
-    uvicorn.run(app, host=args.host, port=args.port)
+    uvicorn.run(app, host=args.host, port=args.port)#

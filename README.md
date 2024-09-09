@@ -18,6 +18,7 @@ An OpenAI API compatible image generation server for the FLUX.1 family of models
 - **Enhancements**: Supports flexible AI prompt enhancers
 - **Standalone Image Generation**: Uses your Nvidia GPU for image generation, doesn't use ComfyUI, SwarmUI or any other backend
 - **Lora Support**: Support for multiple loras with individual scaling weights (strength)
+- **Torch Compile Support**: Faster image generations with `torch.compile` (up to 20% faster in my tests, maybe more or less for other setups).
 - [ ] **Easy to setup and use**: Maybe?
 - [ ] **Upscaler Support** (planned)
 - [ ] **BNB NF4 Quantization** (planned)
@@ -92,7 +93,7 @@ For example, it's simple to use with Open WebUI. Here is a screenshot of the con
 - - [x] model (whatever you configure, `dall-e-2` by default)
 - - [x] size (anything that works with flux, `1024x1024` by default)
 - - [X] quality (whatever you want, `standard` by default)
-- - [x] response_format (`b64_json` preffered, `url` will use `data:` uri's)
+- - [x] response_format (`b64_json` preferred, `url` will use `data:` uri's)
 - - [x] n
 - - [ ] style (`vivid` by default) (currently ignored)
 - - [ ] user (ignored)
@@ -134,23 +135,27 @@ By default, the following models are configured (require ~40GB VRAM, bfloat16, <
 - `dall-e-2` is set to use `shnell`
 - `dall-e-3` is set to use `dev`, with prompt enhancement if an openai chat API is available.
 
-Additional FP8 quantized models (require ~24GB VRAM and can be slow to load, `+enable_vae_slicing`, `+enable_vae_tiling`, ~3+s/step):
+Additional FP8 quantized models (require 24GB VRAM and can be slow to load, `+enable_vae_slicing`, `+enable_vae_tiling`, ~3+s/step):
 
 - `schnell-fp8`: `kijai-flux.1-schnell-fp8.json` Scnhell with FP8 quantization, 4 steps (10-15s)
 - `dev-fp8`: `kijai-flux.1-dev-fp8.json` Dev with FP8 quantization, 25/50 steps
-- `dev-fp8-e5m2`: `kijai-flux.1-dev-fp8-e5m2.json` Dev with FP8_e5m2 quantization, 25/50 steps (slightly better)
 - `merged-fp8`: `drbaph-flux.1-merged-fp8.json` Dev+Schnell merged, FP8 quantization, 12 steps by default
 - `merged-fp8-4step`: `drbaph-flux.1-merged-fp8-4step.json` Dev+Schnell merged, FP8 quantization, 4 steps
 
-Additional FP8 models (require ~16GB VRAM and can be slow to load, `+enable_model_cpu_offload`, ~5+s/step):
+Additional FP8 models (require 16GB VRAM and can be slow to load, `+enable_model_cpu_offload`, ~5+s/step):
 
-- `schnell-fp8-16G`: `kijai-flux.1-schnell-fp8-16G.json` Scnhell, 4 steps (~15-30s)
-- `dev-fp8-16G`: `kijai-flux.1-dev-fp8-16G.json` Dev with FP8 quantization, 25/50 steps
-- `dev-fp8-e5m2-16G`: `kijai-flux.1-dev-fp8-e5m2-16G.json` Dev with FP8_e5m2 quantization, 25/50 steps (slightly better)
-- `merged-fp8-4step-16G`: `drbaph-flux.1-merged-fp8-4step-16G.json` Dev+Schnell merged, 4 steps
-- `merged-fp8-16G`: `drbaph-flux.1-merged-fp8-16G.json` Dev+Schnell merged, 12 steps by default
+- `schnell-fp8-16GB`: `kijai-flux.1-schnell-fp8-16GB.json` Scnhell, 4 steps (~15-30s)
+- `dev-fp8-16GB`: `kijai-flux.1-dev-fp8-16GB.json` Dev with FP8 quantization, 25/50 steps
+(slightly better)
+- `merged-fp8-4step-16GB`: `drbaph-flux.1-merged-fp8-4step-16GB.json` Dev+Schnell merged, 4 steps
+- `merged-fp8-16GB`: `drbaph-flux.1-merged-fp8-16GB.json` Dev+Schnell merged, 12 steps by default
 
-Low VRAM options (<4GB VRAM, ~32GB RAM, `+enable_sequential_cpu_offload`, float16 instead of bfloat16, 8-15+s/step):
+Additional NF4 models (require 12GB VRAM):
+
+- sayakpaul-dev-nf4-12GB: soon ...
+- sayakpaul-dev-nf4-compile-12GB: soon ...
+
+Low VRAM options (<4GB VRAM, 34GB RAM, `+enable_sequential_cpu_offload`, float16 instead of bfloat16, 8-15+s/step):
 
 - `schnell-low`: `flux.1-schnell-low.json` Schnell FP16, (30-60s per image)
 - `dev-low`: `flux.1-dev-low.json` Dev FP16, at least a few minutes per image
