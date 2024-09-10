@@ -51,7 +51,7 @@ HF_TOKEN=XXXXXXX
 
 Start with a copy of a default configuration that suits your environment:
 
-``shell
+```shell
 # The original models, Full BF16 format, for 40GB+ GPU
 cp config.default.json config/config.json
 # or for 24GB GPU
