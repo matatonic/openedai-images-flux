@@ -1,0 +1,21 @@
+{
+  "models": {
+    "dall-e-2": {
+      "generator": "lib/flux.1-schnell-low.json"
+    },
+    "dall-e-3": {
+      "generator": "lib/flux.1-schnell-low.json",
+      "enhancer": "lib/openai-enhancer.json"
+    },
+
+    "schnell-low": {
+      "generator": "lib/flux.1-schnell-low.json"
+    },
+    "merged-low": {
+      "generator": "lib/sayakpaul-flux.1-merged-low.json"
+    },
+    "dev-low": {
+      "generator": "lib/flux.1-dev-low.json"
+    }
+  }
+}

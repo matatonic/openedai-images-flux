@@ -31,12 +31,9 @@ An OpenAI API compatible image generation server for the FLUX.1 family of models
 
 > This is brand new software, if you find any problems or have suggestions please open a [new issue](https://githib.com/matatonic/openedai-images-flux/issues) on GitHub!
 
-> The defaults use the full FP16 FLUX.1 Schnell and Dev models for `dall-e-2` and `dall-e-3` and require approximately 40GB of VRAM, but much more memory friendly options are available by default, and can be easily changed to be the defaults for `dall-e-2/3` if desired. See [Model Configuration](CONFIG.md) for details.
+> The original BF16 black-forest-labs/FLUX.1 models are gated, you must request access, and you must set a HuggingFace token to access them.
 
-
-> black-forest-labs/FLUX.1 models are gated, you must request access, and you must set a HuggingFace token to access them.
-
-### 1. Configure your `images.env` environment file:
+### 1. Configure your environment:
 
 Start by copying the `sample.env` file to `images.env`:
 ```shell
@@ -51,6 +48,21 @@ OPENAI_API_KEY=sk-ip
 # required for access to gated models
 HF_TOKEN=XXXXXXX
 ```
+
+Start with a copy of a default configuration that suits your environment:
+
+``shell
+# The original models, Full BF16 format, for 40GB+ GPU
+cp config.default.json config/config.json
+# or for 24GB GPU
+cp config.default-24GB.json config/config.json
+# or for 16GB GPU
+cp config.default-16GB.json config/config.json
+# or less
+cp config.default-low.json config/config.json
+```
+
+The defaults are intended to provide good quality for `dall-e-2` and `dall-e-3` out of the box with no further configuration.  See [Model Configuration](CONFIG.md) for details.
 
 ### 2. Installation
 

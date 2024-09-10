@@ -1,0 +1,35 @@
+{
+  "models": {
+    "dall-e-2": {
+      "generator": "lib/drbaph-flux.1-merged-fp8-4step-16GB.json"
+    },
+    "dall-e-3": {
+      "generator": "lib/drbaph-flux.1-merged-fp8-4step-16GB.json",
+      "enhancer": "lib/openai-enhancer.json"
+    },
+
+    "schnell-fp8-16GB": {
+      "generator": "lib/kijai-flux.1-schnell-fp8-16GB.json"
+    },
+    "schnell-low": {
+      "generator": "lib/flux.1-schnell-low.json"
+    },
+
+    "merged-fp8-16GB": {
+      "generator": "lib/drbaph-flux.1-merged-fp8-16GB.json"
+    },
+    "merged-fp8-4step-16GB": {
+      "generator": "lib/drbaph-flux.1-merged-fp8-4step-16GB.json"
+    },
+    "merged-low": {
+      "generator": "lib/sayakpaul-flux.1-merged-low.json"
+    },
+
+    "dev-fp8-16GB": {
+      "generator": "lib/kijai-flux.1-dev-fp8-16GB.json"
+    },
+    "dev-low": {
+      "generator": "lib/flux.1-dev-low.json"
+    }
+  }
+}
