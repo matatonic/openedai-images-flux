@@ -1,4 +1,10 @@
 #!/usr/bin/env python
+try:
+    import dotenv
+    dotenv.load_dotenv(override=True)
+except:
+    pass
+
 import argparse
 import base64
 import os
@@ -30,7 +36,7 @@ def parse_args(argv):
 if __name__ == '__main__':
     args = parse_args(sys.argv[1:])
 
-    client = openai.Client(base_url='http://localhost:5005/v1', api_key='sk-ip')
+    client = openai.Client(base_url=os.environ.get("OPENAI_BASE_URL", 'http://localhost:5005/v1'), api_key=os.environ.get("OPENAI_API_KEY", 'sk-ip'))
 
     if args.bulk:
         all_prompts = [ line.strip() for line in open(args.prompt, 'r') if len(line.strip()) > 0 and line.strip()[0] != '#']
