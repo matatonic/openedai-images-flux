@@ -5,11 +5,11 @@
     "Loras": [
       {
         "weights": {
-          "pretrained_model_name_or_path_or_dict": "Shakker-Labs/AWPortrait-FL",
-          "weight_name": "AWPortrait-FL-lora.safetensors"
+          "pretrained_model_name_or_path_or_dict": "ByteDance/Hyper-SD",
+          "weight_name": "Hyper-FLUX.1-dev-8steps-lora.safetensors"
         },
         "options": {
-          "lora_scale": 1.0
+          "lora_scale": 0.125
         }
       }
     ]
@@ -24,11 +24,12 @@
   "generation_kwargs": {
     "standard": {
       "guidance_scale": 3.5,
-      "num_inference_steps": 24
+      "num_inference_steps": 8
     },
     "hd": {
-      "guidance_scale": 5.5,
-      "num_inference_steps": 50
+      "guidance_scale": 3.5,
+      "num_inference_steps": 12
     }
   }
 }
+  

@@ -144,11 +144,15 @@ async def load_flux_model(config: dict) -> FluxPipeline:
 
     # Loras
     for lora in loras:
-        logger.info(f"Loading Lora: args: {lora['weight_name']}")
-
         lora_weights = lora.pop('weights')
+
+        logger.info(f"Loading Lora: args: {lora_weights['weight_name']}")
         flux_pipe.load_lora_weights(**lora_weights)
-        flux_pipe.fuse_lora(lora_scale=lora.pop('lora_scale', 1.0))
+        if 'options' in lora:
+            lora_scale=lora['options'].pop('lora_scale', 1.0)
+        else:
+            lora_scale=lora.pop('lora_scale', 1.0)
+        flux_pipe.fuse_lora(lora_scale=lora_scale)
         flux_pipe.unload_lora_weights()
 
     # This makes no noticeable difference for me, but YMMV
@@ -350,7 +354,7 @@ async def generations(request: GenerationsRequest):
 
                 resp['data'].extend([img_dat])
 
-        logger.debug(f"Generated {len(images)} {request.model} image(s) in {int(time.time()) - resp['created']}s")
+        logger.debug(f"Generated {len(images)} {request.model} image(s) in {time.time() - resp['created'] / 1000:.1f}s")
 
         return resp
 
@@ -399,6 +403,9 @@ if __name__ == "__main__":
     torch._inductor.config.coordinate_descent_tuning = True
     torch._inductor.config.epilogue_fusion = False
     torch._inductor.config.coordinate_descent_check_all_directions = True
+
+    # from hyperflux
+    torch.backends.cuda.matmul.allow_tf32 = True
 
     if args.seed is not None:
         random_seed = args.seed

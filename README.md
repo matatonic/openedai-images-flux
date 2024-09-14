@@ -174,7 +174,7 @@ Low VRAM options (<4GB VRAM, 34GB RAM, `+enable_sequential_cpu_offload`, float16
 
 There are `-compile` variants of many models as well. Be advised that the first couple images in a compiled model will be very slow to generate. The server must load, perhaps quantize and compile, and then the generation is dynamically optimized over the next couple generations, the first image may be 10 minutes or more to prepare. Most models can generate dozens of images in that time, so only use compiled models if you know what you're doing.
 
-And more, including `int8` quants, check out the `config/lib` folder for more examples, including lora options.
+And more, including `int8` quants, check out the `config/lib` folder for more examples, including lora options such as ByteDance `hyper-flux-8steps-lora`.
 
 > Timings are casually measured at 1024x1024 standard on an Nvidia A100 and may vary wildly from your system.
 
@@ -185,7 +185,9 @@ And more, including `int8` quants, check out the `config/lib` folder for more ex
 ## Performance
 
 Performance plots for A100 (80GB) and 4090 (24GB), batch size = 1. Click Details to expand.
+
 <details>
+<summary> Performance details for A100 & 4090</summary>
 
 ![alt text](processing_time_A100.png)
 

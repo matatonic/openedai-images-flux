@@ -63,6 +63,14 @@
       "generator": "lib/sayakpaul-flux.1-merged-low.json"
     },
 
+    "hyper-flux-8steps-lora": {
+      "generator": "lib/hyper-flux-8steps-lora.json"
+    },
+
+    "hyper-flux-16steps-lora": {
+      "generator": "lib/hyper-flux-16steps-lora.json"
+    },
+
     "dev": {
       "generator": "lib/flux.1-dev.json"
     },
