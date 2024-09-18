@@ -10,7 +10,7 @@ RUN mkdir config models lora
 COPY requirements.txt .
 #RUN --mount=type=cache,target=/root/.cache/pip pip install -r requirements.txt
 RUN pip --no-cache install -r requirements.txt
-COPY config/lib /app/config/
+COPY config /app/config
 COPY *.py *.json LICENSE /app/
 
 ENV CLI_COMMAND="python images.py"
