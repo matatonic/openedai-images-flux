@@ -27,6 +27,19 @@ An OpenAI API compatible image generation server for the FLUX.1 family of models
 - [ ] **Easy to setup and use**: Maybe?
 
 
+## Recent Updates
+
+#### 2024-09-18
+- fixup Docker config/lib path, thanks @[nicolaschan](https://github.com/nicolaschan)
+
+<details>
+<summary>Click to expand for older updates.</summary>
+
+#### 2024-09-05
+- Initial release
+
+</details>
+
 ## Quickstart
 
 > This is brand new software, if you find any problems or have suggestions please open a [new issue](https://githib.com/matatonic/openedai-images-flux/issues) on GitHub!

@@ -267,8 +267,10 @@ async def generate_images(pipe, **generation_kwargs) -> list:
 
     generation_kwargs['generator'] = torch.Generator("cpu").manual_seed(seed)
 
-    return pipe(**generation_kwargs).images, seed
-
+    try:
+        return pipe(**generation_kwargs).images, seed
+    finally:
+        torch.cuda.empty_cache()
 
 async def enhance_prompt(prompt: str, **enhancer) -> str:
     enhancer['messages'].extend([{'role': 'user', 'content': prompt }])
