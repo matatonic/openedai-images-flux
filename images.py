@@ -141,6 +141,9 @@ async def load_flux_model(config: dict) -> FluxPipeline:
         if 'dtype' in options['to']:
             options['to']['dtype'] = getattr(torch, options['to']['dtype'])
         flux_pipe.to(**options['to'])
+    if options.get('fuse_qkv_projections', False):
+        flux_pipe.transformer.fuse_qkv_projections()
+        flux_pipe.vae.fuse_qkv_projections()
 
     # Loras
     for lora in loras:
@@ -155,19 +158,16 @@ async def load_flux_model(config: dict) -> FluxPipeline:
         flux_pipe.fuse_lora(lora_scale=lora_scale)
         flux_pipe.unload_lora_weights()
 
-    # This makes no noticeable difference for me, but YMMV
-    # Other than it's often much slower (compile on demand)
     compile = options.pop('compile', [])
-    if compile:
-        logger.info(f"Torch compiling...")
-        if 'transformer' in compile:
-            flux_pipe.transformer.to(memory_format=torch.channels_last)
-            flux_pipe.transformer = torch.compile(flux_pipe.transformer, mode="max-autotune", fullgraph=True)
-        if 'vae' in compile:
-            flux_pipe.vae.to(memory_format=torch.channels_last)
-            flux_pipe.vae = torch.compile(flux_pipe.vae, mode="max-autotune", fullgraph=True)
+    if 'transformer' in compile:
+        logger.info(f"Torch compiling transformer ...")
+        flux_pipe.transformer.to(memory_format=torch.channels_last)
+        flux_pipe.transformer = torch.compile(flux_pipe.transformer, mode="max-autotune", fullgraph=True)
+    if 'vae' in compile:
+        logger.info(f"Torch compiling vae ...")
+        flux_pipe.vae.to(memory_format=torch.channels_last)
+        flux_pipe.vae = torch.compile(flux_pipe.vae, mode="max-autotune", fullgraph=True)
 
-    #flux_pipe.fuse_qkv_projections()
 
     return flux_pipe
 
@@ -330,7 +330,7 @@ async def generations(request: GenerationsRequest):
                     # a closeup portrait of a playful maid, undercut hair, apron, amazing body, pronounced feminine feature, busty, kitchen, [ash blonde | ginger | pink hair], freckles, flirting with camera.Negative prompt: (deformed, distorted, disfigured:1.3), poorly drawn, bad anatomy, wrong anatomy, extra limb, missing limb, floating limbs, (mutated hands and fingers:1.4), disconnected limbs, mutation, mutated, ugly, disgusting, blurry, amputation. tattoo.
                     # Steps: 30, Sampler: DPM++ 2M Karras, CFG scale: 6.5, Seed: 1804518985, Size: 768x1024, Model hash: 9aba26abdf, Model: Deliberate, ENSD: 31337
                     k = generation_kwargs
-                    parameters = f"{k['prompt']}{'.' if k['prompt'][-1] != '.' else ''}Steps: {k['num_inference_steps']}, Sampler: Euler, CFG Scale: {k['guidance_scale']}, Seed: {seed}, Size: {k['width']}x{k['height']}, Model: {request.model}" # batch?
+                    parameters = f"{k['prompt']}{'.' if not k['prompt'] or not k['prompt'][-1] else ''}Steps: {k['num_inference_steps']}, Sampler: Euler, CFG Scale: {k['guidance_scale']}, Seed: {seed}, Size: {k['width']}x{k['height']}, Model: {request.model}" # batch?
                     pngmetadata = PngImagePlugin.PngInfo()
                     pngmetadata.add_text('Parameters', parameters)
                     return pngmetadata
@@ -361,7 +361,7 @@ async def generations(request: GenerationsRequest):
         return resp
 
     except Exception as e: 
-        logger.exception(e)
+        logger.error(e)
         message = repr(e)
 
     unload_model()
@@ -400,7 +400,6 @@ if __name__ == "__main__":
     default_config_exists()
 
     # tuning for compile
-    # 
     torch._inductor.config.conv_1x1_as_mm = True
     torch._inductor.config.coordinate_descent_tuning = True
     torch._inductor.config.epilogue_fusion = False
@@ -408,6 +407,15 @@ if __name__ == "__main__":
 
     # from hyperflux
     torch.backends.cuda.matmul.allow_tf32 = True
+
+    def get_cuda_compute_capability():
+        device = torch.cuda.current_device()
+        properties = torch.cuda.get_device_properties(device)
+        return properties.major, properties.minor
+
+    # from sayakpaul/diffusers-torchao
+    if get_cuda_compute_capability()[0] >= 8:
+        torch.set_float32_matmul_precision("high")
 
     if args.seed is not None:
         random_seed = args.seed

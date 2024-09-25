@@ -29,8 +29,11 @@ An OpenAI API compatible image generation server for the FLUX.1 family of models
 
 ## Recent Updates
 
+#### 2024-09-25
+- fuse_qkv_projections option, fix for empty prompts
+
 #### 2024-09-18
-- fixup Docker config/lib path, thanks @[nicolaschan](https://github.com/nicolaschan)
+- fixup Docker config/lib path, thanks [@nicolaschan](https://github.com/nicolaschan)
 
 <details>
 <summary>Click to expand for older updates.</summary>
