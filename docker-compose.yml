@@ -8,7 +8,7 @@ services:
     env_file:
       - images.env
     volumes:
-      - ./config:/app/config
+      - ./config/config.yaml:/app/config/config.yaml
       - ./models:/app/models
       - ./lora:/app/lora
       - ./models/hf_home:/root/.cache/huggingface
