@@ -1,97 +1,97 @@
 {
   "models": {
     "dall-e-2": {
-      "generator": "lib/flux.1-schnell.json"
+      "generator": "../lib/flux.1-schnell.json"
     },
     "dall-e-3": {
-      "generator": "lib/flux.1-dev.json",
-      "enhancer": "lib/openai-enhancer.json"
+      "generator": "../lib/flux.1-dev.json",
+      "enhancer": "../lib/openai-enhancer.json"
     },
 
     "schnell": {
-      "generator": "lib/flux.1-schnell.json"
+      "generator": "../lib/flux.1-schnell.json"
     },
     "schnell-compile": {
-      "generator": "lib/flux.1-schnell-compile.json"
+      "generator": "../lib/flux.1-schnell-compile.json"
     },
     "schnell-e": {
-      "generator": "lib/flux.1-schnell.json",
-      "enhancer": "lib/openai-enhancer.json"
+      "generator": "../lib/flux.1-schnell.json",
+      "enhancer": "../lib/openai-enhancer.json"
     },
     "schnell-fp8": {
-      "generator": "lib/kijai-flux.1-schnell-fp8.json"
+      "generator": "../lib/kijai-flux.1-schnell-fp8.json"
     },
     "schnell-fp8-compile": {
-      "generator": "lib/kijai-flux.1-schnell-fp8-compile.json"
+      "generator": "../lib/kijai-flux.1-schnell-fp8-compile.json"
     },
     "schnell-fp8-16GB": {
-      "generator": "lib/kijai-flux.1-schnell-fp8-16GB.json"
+      "generator": "../lib/kijai-flux.1-schnell-fp8-16GB.json"
     },
     "schnell-low": {
-      "generator": "lib/flux.1-schnell-low.json"
+      "generator": "../lib/flux.1-schnell-low.json"
     },
 
     "merged": {
-      "generator": "lib/sayakpaul-flux.1-merged.json"
+      "generator": "../lib/sayakpaul-flux.1-merged.json"
     },
     "merged-compile": {
-      "generator": "lib/sayakpaul-flux.1-merged-compile.json"
+      "generator": "../lib/sayakpaul-flux.1-merged-compile.json"
     },
     "merged-e": {
-      "generator": "lib/sayakpaul-flux.1-merged.json",
-      "enhancer": "lib/openai-enhancer.json"
+      "generator": "../lib/sayakpaul-flux.1-merged.json",
+      "enhancer": "../lib/openai-enhancer.json"
     },
     "merged-fp8": {
-      "generator": "lib/drbaph-flux.1-merged-fp8.json"
+      "generator": "../lib/drbaph-flux.1-merged-fp8.json"
     },
     "merged-fp8-compile": {
-      "generator": "lib/drbaph-flux.1-merged-fp8-compile.json"
+      "generator": "../lib/drbaph-flux.1-merged-fp8-compile.json"
     },
     "merged-fp8-16GB": {
-      "generator": "lib/drbaph-flux.1-merged-fp8-16GB.json"
+      "generator": "../lib/drbaph-flux.1-merged-fp8-16GB.json"
     },
     "merged-fp8-4step": {
-      "generator": "lib/drbaph-flux.1-merged-fp8-4step.json"
+      "generator": "../lib/drbaph-flux.1-merged-fp8-4step.json"
     },
     "merged-fp8-4step-compile": {
-      "generator": "lib/drbaph-flux.1-merged-fp8-4step-compile.json"
+      "generator": "../lib/drbaph-flux.1-merged-fp8-4step-compile.json"
     },
     "merged-fp8-4step-16GB": {
-      "generator": "lib/drbaph-flux.1-merged-fp8-4step-16GB.json"
+      "generator": "../lib/drbaph-flux.1-merged-fp8-4step-16GB.json"
     },
     "merged-low": {
-      "generator": "lib/sayakpaul-flux.1-merged-low.json"
+      "generator": "../lib/sayakpaul-flux.1-merged-low.json"
     },
 
     "hyper-flux-8steps-lora": {
-      "generator": "lib/hyper-flux-8steps-lora.json"
+      "generator": "../lib/hyper-flux-8steps-lora.json"
     },
 
     "hyper-flux-16steps-lora": {
-      "generator": "lib/hyper-flux-16steps-lora.json"
+      "generator": "../lib/hyper-flux-16steps-lora.json"
     },
 
     "dev": {
-      "generator": "lib/flux.1-dev.json"
+      "generator": "../lib/flux.1-dev.json"
     },
     "dev-compile": {
-      "generator": "lib/flux.1-dev-compile.json"
+      "generator": "../lib/flux.1-dev-compile.json"
     },
     "dev-e": {
-      "generator": "lib/flux.1-dev.json",
-      "enhancer": "lib/openai-enhancer.json"
+      "generator": "../lib/flux.1-dev.json",
+      "enhancer": "../lib/openai-enhancer.json"
     },
     "dev-fp8": {
-      "generator": "lib/kijai-flux.1-dev-fp8.json"
+      "generator": "../lib/kijai-flux.1-dev-fp8.json"
     },
     "dev-fp8-compile": {
-      "generator": "lib/kijai-flux.1-dev-fp8-compile.json"
+      "generator": "../lib/kijai-flux.1-dev-fp8-compile.json"
     },
     "dev-fp8-16GB": {
-      "generator": "lib/kijai-flux.1-dev-fp8-16GB.json"
+      "generator": "../lib/kijai-flux.1-dev-fp8-16GB.json"
     },
     "dev-low": {
-      "generator": "lib/flux.1-dev-low.json"
+      "generator": "../lib/flux.1-dev-low.json"
     }
   }
 }

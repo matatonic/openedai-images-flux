@@ -29,6 +29,9 @@ An OpenAI API compatible image generation server for the FLUX.1 family of models
 
 ## Recent Updates
 
+#### 2025-01-27
+- Move `./config/lib` to `./lib` and make necessary adjustuments, by [@Helvio88](https://github.com/Helvio88)
+
 #### 2024-09-25
 - fuse_qkv_projections option, fix for empty prompts
 
@@ -190,7 +193,7 @@ Low VRAM options (<4GB VRAM, 34GB RAM, `+enable_sequential_cpu_offload`, float16
 
 There are `-compile` variants of many models as well. Be advised that the first couple images in a compiled model will be very slow to generate. The server must load, perhaps quantize and compile, and then the generation is dynamically optimized over the next couple generations, the first image may be 10 minutes or more to prepare. Most models can generate dozens of images in that time, so only use compiled models if you know what you're doing.
 
-And more, including `int8` quants, check out the `config/lib` folder for more examples, including lora options such as ByteDance `hyper-flux-8steps-lora`.
+And more, including `int8` quants, check out the `./lib` folder for more examples, including lora options such as ByteDance `hyper-flux-8steps-lora`.
 
 > Timings are casually measured at 1024x1024 standard on an Nvidia A100 and may vary wildly from your system.
 
